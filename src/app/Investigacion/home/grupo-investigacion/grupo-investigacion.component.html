@@ -1,0 +1,103 @@
+<br>
+<div class="container" style="margin-left: 10px;">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="form_groupIn" (ngSubmit)="GroupInvestigation()">
+                        <input type="text" class="form-control" [(ngModel)]="Group._id"
+                        formControlName="_id" disabled style="display: none;">
+                        <div class="row mx-auto">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input type="text" class="form-control" [(ngModel)]="Group.name"
+                                        formControlName="name">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Fecha de Creación</label>
+                                    <input type="date" class="form-control" [(ngModel)]="Group.create_date"
+                                        formControlName="create_date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mx-auto">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Linea de Investigación</label>
+                                    <input type="text" class="form-control" [(ngModel)]="Group.linea_investigacion"
+                                        formControlName="linea_investigacion">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Proyectos Generados</label>
+                                    <input type="text" class="form-control" [(ngModel)]="Group.project_generados"
+                                        formControlName="project_generados">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mx-auto">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label><i class="fas fa-user-tie"></i> Añadir Integrantes</label>
+                                    <div class="integrantes">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                <tr *ngFor="let user of users" (click)="integrantes(user.names)">
+                                                    <td>{{user.names}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="from-group">
+                                    <label><i class="fas fa-user-check"></i> Añadidos</label>
+                                    <div class="anadidos">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr *ngFor="let menber of Group.menbers;let i=index">
+                                                    <td>{{menber}}</td>
+                                                    <td><i class="fas fa-user-times" (click)="prueba(i)"></i>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Linea de Investigación</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let group of groupInvestigation" (click)="datos_grupo(group)">
+                        <td>{{group.name}}</td>
+                        <td>{{group.linea_investigacion}}</td>
+                        <td><button class="btn btn-dark" id="delete" type="button" data-toggle="modal"
+                                data-target="#updateOrSave"><i class="fas fa-user-edit"></i> Editar</button></td>
+                        <td><button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-dark"
+                                id="delete"><i class="fas fa-trash"></i> Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
