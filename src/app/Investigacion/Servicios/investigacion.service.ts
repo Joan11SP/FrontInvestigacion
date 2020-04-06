@@ -8,7 +8,7 @@ import { ProjectInvestigation } from '../Models/project_investigation';
 })
 export class InvestigacionService {
 
-  Url = 'http://localhost:3000/SistemaInvestigacion/';
+  Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
   constructor(private http:HttpClient) { }
 
   getCarrers(){
@@ -46,5 +46,11 @@ export class InvestigacionService {
   }
   OneProjectInvestigation(project:ProjectInvestigation){
     return this.http.post(`${this.Url}oneProjectInvestigation`,project);
+  }
+  updateProjectInvestigation(project:ProjectInvestigation){
+    return this.http.post(`${this.Url}updateProjectInvestigation`,project);
+  }
+  deleteProjectInvestigation(project:ProjectInvestigation){
+    return this.http.post(`${this.Url}deleteProjectInvestigation`,project);
   }
 }

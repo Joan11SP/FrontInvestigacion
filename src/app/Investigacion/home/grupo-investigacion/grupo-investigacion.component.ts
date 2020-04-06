@@ -37,7 +37,7 @@ export class GrupoInvestigacionComponent implements OnInit {
   ngOnInit() {
     this.allUsers()
     this.allGroupInvestigation()    
-    this.Group.menbers.shift()
+    this.Group.menbers.splice(0,10)
   }
   GroupInvestigation(){
     if(this.Group._id==null){
@@ -55,7 +55,7 @@ export class GrupoInvestigacionComponent implements OnInit {
         this.openSnackBar("Guardado Correctamente");
         this.allGroupInvestigation()
         this.form_groupIn.reset()
-        this.Group.menbers.shift()
+        this.Group.menbers.splice(0,10)
       }
     })
   }
@@ -86,7 +86,7 @@ export class GrupoInvestigacionComponent implements OnInit {
         this.openSnackBar("Actualizado Correctamente")
         this.allGroupInvestigation()
         this.form_groupIn.reset()
-        this.Group.menbers.shift()
+        this.Group.menbers.splice(0,10)
       }
     })
   }
@@ -94,7 +94,7 @@ export class GrupoInvestigacionComponent implements OnInit {
     console.log(this.Group)
     this.service.deleteGroupInvestigation(this.Group).subscribe(data=>{
       this.form_groupIn.reset()
-      this.Group.menbers.shift()
+      this.Group.menbers.splice(0,10)
       this.allGroupInvestigation()
     })
   }

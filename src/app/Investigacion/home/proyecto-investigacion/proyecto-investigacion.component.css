@@ -1,6 +1,5 @@
-.anadidos{
-    max-height: 160px;
+.container.projects{
+    height: 200px ;
     position: relative;
-    max-width: 340px;
     overflow:auto;
 }

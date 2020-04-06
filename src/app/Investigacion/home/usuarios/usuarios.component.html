@@ -1,12 +1,13 @@
 <br>
+
 <body>
     <div class="container  table-wrapper-scroll-y my-custom-scrollbar" style="margin-left: 22%;">
 
         <!--Nuevo Registro-->
         <div class="row mx-auto" style="margin-block-end: auto;">
             <div class="col-md-8">
-                <button mat-button class="btn btn-dark" type="button" data-toggle="modal"
-                    data-target="#updateOrSave" (click)="openModal()"><i class="fas fa-user-plus"></i> Nuevo
+                <button mat-button class="btn btn-dark" type="button" data-toggle="modal" data-target="#updateOrSave"
+                    (click)="openModal()"><i class="fas fa-user-plus"></i> Nuevo
                     Usuario</button>
             </div>
         </div><br>
@@ -28,7 +29,7 @@
                             <td>{{user.names}}</td>
                             <td>{{user.nivel_educacion}}</td>
                             <td><button class="btn btn-dark" id="delete" type="button" data-toggle="modal"
-                                    data-target="#updateOrSave" ><i class="fas fa-user-edit"></i> Editar</button></td>
+                                    data-target="#updateOrSave"><i class="fas fa-user-edit"></i> Editar</button></td>
                             <td><button type="button" data-toggle="modal" data-target="#exampleModal"
                                     class="btn btn-dark" id="delete"><i class="fas fa-trash"></i> Eliminar</button></td>
                         </tr>
@@ -53,7 +54,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-dark" data-dismiss="modal" (click)="deleteUser()">Si</button>
+                        <button type="submit" class="btn btn-dark" data-dismiss="modal"
+                            (click)="deleteUser()">Si</button>
                     </div>
                 </div>
             </div>
@@ -97,6 +99,11 @@
                                                 <label>Correo:</label>
                                                 <input type="text" class="form-control" [(ngModel)]="User.email"
                                                     formControlName="email">
+                                                <div *ngIf='email.invalid && (email.dirty || email.touche)'>
+                                                    <div *ngIf='email.errors.pattern'>
+                                                        <label>ingrese un correo valido</label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -119,9 +126,10 @@
                                         </div>
                                         <div class="col-md-4">
                                             <label>Carrera:</label>
-                                            <select  class="form-control" [(ngModel)]="User.id_carrer"
+                                            <select class="form-control" [(ngModel)]="User.id_carrer"
                                                 formControlName="id_carrer">
-                                                <option *ngFor="let carrer of carreras" value="carrer.id">{{carrer.nameCarrer}}</option>
+                                                <option *ngFor="let carrer of carreras" value="carrer.id">
+                                                    {{carrer.nameCarrer}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -156,7 +164,8 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Linea de Investigación:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="User.linea_investigacion"
+                                                <input type="text" class="form-control"
+                                                    [(ngModel)]="User.linea_investigacion"
                                                     formControlName="linea_investigacion">
                                             </div>
                                         </div>
@@ -169,10 +178,10 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" [disabled]="!form_user.valid"
-                                            class="btn btn-dark"><i class="fas fa-save"></i> Guardar</button>
-                                        <button type="button" class="btn btn-primary"
-                                            data-dismiss="modal"><i class="fas fa-user-times"></i> Cancelar</button>
+                                        <button type="submit" [disabled]="!form_user.valid" class="btn btn-dark"><i
+                                                class="fas fa-save"></i> Guardar</button>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i
+                                                class="fas fa-user-times"></i> Cancelar</button>
                                     </div>
                                 </form>
                             </div>
