@@ -22,6 +22,7 @@ export class GrupoInvestigacionComponent implements OnInit {
   groupInvestigation:any=[]
   users:any=[]
   form_groupIn: FormGroup;
+  updateGroups:any=[]
   constructor(private form: FormBuilder,private service: InvestigacionService,private snackBar:MatSnackBar) {
     this.form_groupIn = this.form.group({
       _id:null,
@@ -35,7 +36,8 @@ export class GrupoInvestigacionComponent implements OnInit {
 
   ngOnInit() {
     this.allUsers()
-    this.allGroupInvestigation()
+    this.allGroupInvestigation()    
+    this.Group.menbers.shift()
   }
   GroupInvestigation(){
     if(this.Group._id==null){
@@ -47,12 +49,13 @@ export class GrupoInvestigacionComponent implements OnInit {
   }
   createGroup(){
     this.service.createGroupInvestigation(this.Group).subscribe(data=>{
-      this.users=data
+      this.updateGroups=data
       console.log(data)
-      if(this.users.mensaje=="guardado"){
+      if(this.updateGroups.mensaje=="guardado"){
         this.openSnackBar("Guardado Correctamente");
         this.allGroupInvestigation()
         this.form_groupIn.reset()
+        this.Group.menbers.shift()
       }
     })
   }
@@ -78,15 +81,23 @@ export class GrupoInvestigacionComponent implements OnInit {
   }
   updateGroup(){
     this.service.updateGroupInvestigation(this.Group).subscribe(data=>{
-      this.users=data
-      if(this.users.nModified===1){
+      this.updateGroups=data
+      if(this.updateGroups.nModified===1){
         this.openSnackBar("Actualizado Correctamente")
         this.allGroupInvestigation()
         this.form_groupIn.reset()
+        this.Group.menbers.shift()
       }
     })
   }
-
+  deleteGroup(){
+    console.log(this.Group)
+    this.service.deleteGroupInvestigation(this.Group).subscribe(data=>{
+      this.form_groupIn.reset()
+      this.Group.menbers.shift()
+      this.allGroupInvestigation()
+    })
+  }
   openSnackBar(message){    
     this.snackBar.open(message,'',{
       duration:2000

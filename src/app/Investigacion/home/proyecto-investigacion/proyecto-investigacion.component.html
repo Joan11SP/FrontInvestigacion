@@ -1,0 +1,134 @@
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-title">
+            <h3 class="text-center">Proyectos de Investigación</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="form_project" (ngSubmit)="createProject()">
+                <div class="row mx-auto">
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Fecha de Inicio</label>
+                            <input type="date" class="form-control" [(ngModel)]="Project.fecha_inicio"
+                                formControlName="fecha_inicio">
+                        </div>
+                    </div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Fecha de Termino</label>
+                            <input type="date" class="form-control" [(ngModel)]="Project.fecha_fin"
+                                formControlName="fecha_fin">
+                        </div>
+                    </div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Linea de Investigación</label>
+                            <input type="text" class="form-control" [(ngModel)]="Project.linea_investigacion"
+                                formControlName="linea_investigacion">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Introducción</label>
+                            <textarea type="text" class="form-control" style="height: 100px;"
+                                [(ngModel)]="Project.introduccion" formControlName="introduccion"> </textarea>
+                        </div>
+                    </div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Justificación</label>
+                            <textarea type="text" class="form-control" style="height: 100px;"
+                                [(ngModel)]="Project.justificacion" formControlName="justificacion"> </textarea>
+                        </div>
+                    </div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1"> Materiales</label>
+                            <textarea type="text" class="form-control" style="height: 100px;"
+                                [(ngModel)]="Project.materiales" formControlName="materiales"> </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Objetivos</label>
+                            <textarea class="form-control" [(ngModel)]="Project.objetivos"
+                                formControlName="objetivos"></textarea>
+                        </div>
+                    </div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Presupuesto</label>
+                            <input type="text" class="form-control" [(ngModel)]="Project.presupuesto"
+                                formControlName="presupuesto">
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="exampleInputEmail1">Resultados Esperados</label>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="fas fa-paper-plane"
+                                        (click)="addResultado(result)"></i></button>
+                            </span>
+                            <input type="text" class="form-control" #result>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Cronograma</label>
+                            <input type="text" class="form-control" [(ngModel)]="Project.cronograma"
+                                formControlName="cronograma">
+                        </div>
+                    </div>
+
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label>Artículo Generados</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Resultados agregados</label>
+                            <div class="anadidos">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr *ngFor="let result of Project.resultados_esperados;let i=index">
+                                                    <td>{{result}}</td>
+                                                    <td><i class="fas fa-backspace" (click)="quitResultados(i)"></i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col md-6">
+                        <label>Estado del Proyecto</label>
+                        <select class="form-control" [(ngModel)]="Project.estado_proyecto"
+                            formControlName="estado_proyecto">
+                            <option value="E">Ejecutandose</option>
+                            <option value="F">Finalizado</option>
+                        </select>
+                    </div>
+                    <div class="col md-6"></div>
+                    <div class="col md-6"></div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

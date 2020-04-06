@@ -11,6 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { GrupoInvestigacionComponent } from './Investigacion/home/grupo-investigacion/grupo-investigacion.component';
+import { ProyectoInvestigacionComponent } from './Investigacion/home/proyecto-investigacion/proyecto-investigacion.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { GrupoInvestigacionComponent } from './Investigacion/home/grupo-investig
     HomeComponent,
     NavegacionComponent,
     UsuariosComponent,
-    GrupoInvestigacionComponent
+    GrupoInvestigacionComponent,
+    ProyectoInvestigacionComponent
   ],
   imports: [
     BrowserModule,

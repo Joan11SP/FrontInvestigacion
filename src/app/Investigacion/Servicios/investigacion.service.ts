@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { User } from '../Models/users';
 import { GroupInvestigation } from '../Models/group_investigation';
+import { ProjectInvestigation } from '../Models/project_investigation';
 @Injectable({
   providedIn: 'root'
 })
@@ -35,6 +36,15 @@ export class InvestigacionService {
     return this.http.post(`${this.Url}updateGroupInvestigacion`,group);
   }
   deleteGroupInvestigation(group:GroupInvestigation){
-    return this.http.post(`${this.Url}deleteGroupInvestigacion`,group);
+    return this.http.post(`${this.Url}deleteGroupInvestigation`,group);
+  }
+  createProjectInvestigation(project:ProjectInvestigation){
+    return this.http.post(`${this.Url}saveProjectInvestigation`,project);
+  }
+  allProjectInvestigation(){
+    return this.http.get(`${this.Url}allProjectInvestigation`);
+  }
+  OneProjectInvestigation(project:ProjectInvestigation){
+    return this.http.post(`${this.Url}oneProjectInvestigation`,project);
   }
 }

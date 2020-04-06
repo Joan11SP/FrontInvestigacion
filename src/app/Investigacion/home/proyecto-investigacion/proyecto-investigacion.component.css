@@ -1,0 +1,6 @@
+.anadidos{
+    max-height: 160px;
+    position: relative;
+    max-width: 340px;
+    overflow:auto;
+}

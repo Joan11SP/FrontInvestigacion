@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Investigacion/home/home.component';
 import { UsuariosComponent } from './Investigacion/home/usuarios/usuarios.component';
 import { GrupoInvestigacionComponent } from './Investigacion/home/grupo-investigacion/grupo-investigacion.component';
+import { ProyectoInvestigacionComponent } from './Investigacion/home/proyecto-investigacion/proyecto-investigacion.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,12 @@ const routes: Routes = [
   },
   {
     path: "groupInvestigation",component:GrupoInvestigacionComponent
+  },
+  {
+    path: "proyectoInvestigacion",component:ProyectoInvestigacionComponent
+  },
+  {
+    path: "proyectoInvestigacion/:id",component:ProyectoInvestigacionComponent
   }
 ];
 
