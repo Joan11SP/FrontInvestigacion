@@ -1,11 +1,11 @@
 ul.navbar-nav li.active {
-    font-size: larger;
+    font-size: medium;
 }
 
 .navbar {
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 .nav-item {
-    font-size: large;
+    font-size: medium;
 }
