@@ -7,6 +7,7 @@ import { ProyectoInvestigacionComponent } from './Investigacion/home/proyecto-in
 
 
 const routes: Routes = [
+  {path:'',redirectTo:"home", pathMatch:"full"},
   {
     path: "home",component:HomeComponent
   },
