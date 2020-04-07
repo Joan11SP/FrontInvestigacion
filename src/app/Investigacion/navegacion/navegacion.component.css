@@ -2,6 +2,10 @@ ul.navbar-nav li.active {
     font-size: larger;
 }
 
+.navbar {
+    margin-top: 5%;
+}
+
 .nav-item {
     font-size: large;
 }
