@@ -1,13 +1,12 @@
 <br>
 
 <body>
-    <div class="container  table-wrapper-scroll-y my-custom-scrollbar" style="margin-left: 22%;">
+    <div class="container  table-wrapper-scroll-y my-custom-scrollbar">
 
         <!--Nuevo Registro-->
         <div class="row mx-auto" style="margin-block-end: auto;">
             <div class="col-md-8">
-                <button mat-button class="btn btn-dark" type="button" data-toggle="modal" data-target="#updateOrSave"
-                    (click)="openModal()"><i class="fas fa-user-plus"></i> Nuevo
+                <button mat-button class="btn btn-dark" type="button" data-toggle="modal" data-target="#updateOrSave" (click)="openModal()"><i class="fas fa-user-plus"></i> Nuevo
                     Usuario</button>
             </div>
         </div><br>
@@ -28,10 +27,8 @@
                             <td>{{user.dni}}</td>
                             <td>{{user.names}}</td>
                             <td>{{user.nivel_educacion}}</td>
-                            <td><button class="btn btn-dark" id="delete" type="button" data-toggle="modal"
-                                    data-target="#updateOrSave"><i class="fas fa-user-edit"></i> Editar</button></td>
-                            <td><button type="button" data-toggle="modal" data-target="#exampleModal"
-                                    class="btn btn-dark" id="delete"><i class="fas fa-trash"></i> Eliminar</button></td>
+                            <td><button class="btn btn-dark" id="delete" type="button" data-toggle="modal" data-target="#updateOrSave"><i class="fas fa-user-edit"></i> Editar</button></td>
+                            <td><button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-dark" id="delete"><i class="fas fa-trash"></i> Eliminar</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -39,8 +36,7 @@
         </div>
 
         <!-- Modal para elimiar-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -54,16 +50,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-dark" data-dismiss="modal"
-                            (click)="deleteUser()">Si</button>
+                        <button type="submit" class="btn btn-dark" data-dismiss="modal" (click)="deleteUser()">Si</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Modal con Registros -->
-    <div class="modal fade" id="updateOrSave" tabindex="-1" role="document" data-backdrop="false"
-        aria-labelledby="exampleModalLabel" aria-hidden="true" draggable="true">
+    <div class="modal fade" id="updateOrSave" tabindex="-1" role="document" data-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="true" draggable="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -79,26 +73,22 @@
                             <div>
                                 <form role="form" [formGroup]="form_user" (ngSubmit)="newUser()" novalidate>
                                     <div class="row mx-auto">
-                                        <input type="text" class="form-control" [(ngModel)]="User._id"
-                                            formControlName="_id" disabled style="width: 550px;"><br>
+                                        <input type="text" class="form-control" [(ngModel)]="User._id" formControlName="_id" disabled style="width: 550px;"><br>
                                         <br>
                                         <div class="col-md-4">
                                             <label>Cédula:</label>
-                                            <input type="text" class="form-control" [(ngModel)]="User.dni"
-                                                formControlName="dni">
+                                            <input type="text" class="form-control" [(ngModel)]="User.dni" formControlName="dni">
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Nombre Completo:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="User.names"
-                                                    formControlName="names">
+                                                <input type="text" class="form-control" [(ngModel)]="User.names" formControlName="names">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Correo:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="User.email"
-                                                    formControlName="email">
+                                                <input type="text" class="form-control" [(ngModel)]="User.email" formControlName="email">
                                                 <div *ngIf='email.invalid && (email.dirty || email.touche)'>
                                                     <div *ngIf='email.errors.pattern'>
                                                         <label>ingrese un correo valido</label>
@@ -112,22 +102,18 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Titulo:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="User.titulo"
-                                                    formControlName="titulo">
+                                                <input type="text" class="form-control" [(ngModel)]="User.titulo" formControlName="titulo">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Nivel de Educación:</label>
-                                                <input type="text" class="form-control"
-                                                    [(ngModel)]="User.nivel_educacion"
-                                                    formControlName="nivel_educacion">
+                                                <input type="text" class="form-control" [(ngModel)]="User.nivel_educacion" formControlName="nivel_educacion">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <label>Carrera:</label>
-                                            <select class="form-control" [(ngModel)]="User.id_carrer"
-                                                formControlName="id_carrer">
+                                            <select class="form-control" [(ngModel)]="User.id_carrer" formControlName="id_carrer">
                                                 <option *ngFor="let carrer of carreras" value="carrer.id">
                                                     {{carrer.nameCarrer}}</option>
                                             </select>
@@ -137,8 +123,7 @@
                                     <div class="row mx-auto">
                                         <div class="col-md-4">
                                             <label>Genero:</label>
-                                            <select name="miselect" class="form-control" [(ngModel)]="User.gender"
-                                                formControlName="gender">
+                                            <select name="miselect" class="form-control" [(ngModel)]="User.gender" formControlName="gender">
                                                 <option value="M">Masculino</option>
                                                 <option value="F">Femenino</option>
                                             </select>
@@ -146,16 +131,13 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Telefono:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="User.phone"
-                                                    formControlName="phone">
+                                                <input type="text" class="form-control" [(ngModel)]="User.phone" formControlName="phone">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Horas:</label>
-                                                <input type="number" class="form-control"
-                                                    [(ngModel)]="User.nroHorasDedicacionSemanal"
-                                                    formControlName="nroHorasDedicacionSemanal">
+                                                <input type="number" class="form-control" [(ngModel)]="User.nroHorasDedicacionSemanal" formControlName="nroHorasDedicacionSemanal">
                                             </div>
                                         </div>
                                     </div>
@@ -164,16 +146,13 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Linea de Investigación:</label>
-                                                <input type="text" class="form-control"
-                                                    [(ngModel)]="User.linea_investigacion"
-                                                    formControlName="linea_investigacion">
+                                                <input type="text" class="form-control" [(ngModel)]="User.linea_investigacion" formControlName="linea_investigacion">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>ORCID:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="User.orcid"
-                                                    formControlName="orcid">
+                                                <input type="text" class="form-control" [(ngModel)]="User.orcid" formControlName="orcid">
                                             </div>
                                         </div>
                                     </div>

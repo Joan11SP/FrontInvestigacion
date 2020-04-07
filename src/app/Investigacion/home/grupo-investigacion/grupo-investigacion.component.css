@@ -1,12 +1,17 @@
-.anadidos{
-    max-height: 160px;
-    position: relative;
-    max-width: 300px;
-    overflow:auto;
+.card {
+    background-color: rgba(255, 255, 255, 60%);
 }
-.integrantes{
+
+.anadidos {
     max-height: 160px;
     position: relative;
     max-width: 300px;
-    overflow:auto;
+    overflow: auto;
+}
+
+.integrantes {
+    max-height: 160px;
+    position: relative;
+    max-width: 300px;
+    overflow: auto;
 }
