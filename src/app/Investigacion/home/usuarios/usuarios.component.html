@@ -73,8 +73,8 @@
                             <div>
                                 <form role="form" [formGroup]="form_user" (ngSubmit)="newUser()" novalidate>
                                     <div class="row mx-auto">
-                                        <input type="text" class="form-control" style="display: none;" [(ngModel)]="User._id" formControlName="_id"><br>
-                                        <br>
+                                        <input type="text" class="form-control" style="display: none;" [(ngModel)]="User._id" formControlName="_id">
+                                        
                                         <div class="col-md-4">
                                             <label>Cédula:</label>
                                             <input type="text" class="form-control" [(ngModel)]="User.dni" formControlName="dni">
