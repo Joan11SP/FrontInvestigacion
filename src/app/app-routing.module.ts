@@ -9,25 +9,25 @@ import { GuardsGuard } from './Investigacion/Guards/guards.guard';
 
 
 const routes: Routes = [
-  {path:'',redirectTo:"login", pathMatch:"full"},
-  {path:"login",component:LoginComponent},
- 
+  { path: '', redirectTo: "login", pathMatch: "full" },
+  { path: "login", component: LoginComponent },
+
   {
-    path: "home",component:HomeComponent,canActivate:[GuardsGuard]
+    path: "home", component: HomeComponent, canActivate: [GuardsGuard]
   },
   {
-    path: "users",component:UsuariosComponent,canActivate:[GuardsGuard]
+    path: "users", component: UsuariosComponent, canActivate: [GuardsGuard]
   },
   {
-    path: "groupInvestigation",component:GrupoInvestigacionComponent,canActivate:[GuardsGuard]
+    path: "groupInvestigation", component: GrupoInvestigacionComponent, canActivate: [GuardsGuard]
   },
   {
-    path: "proyectoInvestigacion",component:ProyectoInvestigacionComponent,canActivate:[GuardsGuard]
+    path: "proyectoInvestigacion", component: ProyectoInvestigacionComponent, canActivate: [GuardsGuard]
   },
   {
-    path: "proyectoInvestigacion/:id",component:ProyectoInvestigacionComponent,canActivate:[GuardsGuard]
+    path: "proyectoInvestigacion/:id", component: ProyectoInvestigacionComponent, canActivate: [GuardsGuard]
   }
-  
+
 ];
 
 @NgModule({
