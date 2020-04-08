@@ -6,6 +6,7 @@ import { UsuariosComponent } from './Investigacion/home/usuarios/usuarios.compon
 import { GrupoInvestigacionComponent } from './Investigacion/home/grupo-investigacion/grupo-investigacion.component';
 import { ProyectoInvestigacionComponent } from './Investigacion/home/proyecto-investigacion/proyecto-investigacion.component';
 import { GuardsGuard } from './Investigacion/Guards/guards.guard';
+import { NavegacionComponent } from './Investigacion/navegacion/navegacion.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,9 @@ const routes: Routes = [
   },
   {
     path: "proyectoInvestigacion/:id", component: ProyectoInvestigacionComponent, canActivate: [GuardsGuard]
+  },
+  {
+    path:"navegacion",component:NavegacionComponent, canActivate: [GuardsGuard]
   }
 
 ];
