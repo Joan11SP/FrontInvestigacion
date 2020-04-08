@@ -1,6 +1,7 @@
 export interface User{
     _id:string,
     dni:string,
+    password:string,
     names:string,
     email:string,
     gender:string,
