@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import { User } from '../Models/users';
 import { GroupInvestigation } from '../Models/group_investigation';
 import { ProjectInvestigation } from '../Models/project_investigation';
+import { Login } from '../Models/Login';
 @Injectable({
   providedIn: 'root'
 })
@@ -52,5 +53,8 @@ export class InvestigacionService {
   }
   deleteProjectInvestigation(project:ProjectInvestigation){
     return this.http.post(`${this.Url}deleteProjectInvestigation`,project);
+  }
+  getLogin(login:Login){
+    return this.http.post(`${this.Url}login`,login);
   }
 }

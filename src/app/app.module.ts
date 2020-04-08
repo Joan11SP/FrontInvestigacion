@@ -12,7 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { GrupoInvestigacionComponent } from './Investigacion/home/grupo-investigacion/grupo-investigacion.component';
 import { ProyectoInvestigacionComponent } from './Investigacion/home/proyecto-investigacion/proyecto-investigacion.component';
-
+import { LoginComponent } from './login/login.component';
+import { GuardsGuard } from './Investigacion/Guards/guards.guard';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProyectoInvestigacionComponent } from './Investigacion/home/proyecto-in
     NavegacionComponent,
     UsuariosComponent,
     GrupoInvestigacionComponent,
-    ProyectoInvestigacionComponent
+    ProyectoInvestigacionComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { ProyectoInvestigacionComponent } from './Investigacion/home/proyecto-in
     BrowserAnimationsModule,
     MatSnackBarModule,   
   ],
-  providers: [],
+  providers: [GuardsGuard,LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="card">
+                        <div class="card-header">
+
+                            <h3>Inicio de Sesión</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form-signin" [formGroup]="form_login" (ngSubmit)="getLogin()">
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <!--imput de usuario-->
+                                    <input type="text" class="form-control" [(ngModel)]="Login.dni" formControlName="dni" autofocus>
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <!--imput de contraseña-->
+                                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    </div>
+
+                                    <input type="password" placeholder="password" class="form-control" [(ngModel)]="Login.password" formControlName="password">
+                                </div>
+                                <input type="submit" value="Login" class="btn float-right login_btn">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
