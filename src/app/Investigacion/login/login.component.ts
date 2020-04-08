@@ -12,14 +12,16 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private Login:Login={dni:'',password:''}
+  private Login:Login={
+    dni:'',
+    password:''
+  }
   public login:any=[];
   form_login:FormGroup;
   constructor(private servicio:InvestigacionService,private router:Router,private snackBar:MatSnackBar,private form:FormBuilder) { 
     this.form_login=this.form.group({
       dni:[''],
       password:['']
-
     });
   }
   
