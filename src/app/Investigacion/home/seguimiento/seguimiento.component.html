@@ -1,0 +1,160 @@
+<div class="container">
+    <div class="row mx-auto">
+        <div class="col lg-6">
+            <div class="card">
+                <div class="card-title">
+                    <h4 class="text-center p-2">Información del Proyecto</h4>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="form_seguimiento" (ngSubmit)="createSeguimiento()">
+                        <div class="row mx-auto">
+                            <div class="col md-4">
+                                <div class="form-group">
+                                    <label>Eliga el Proyecto</label>
+                                    <select class="form-control" (change)="changeProject($event)"
+                                        [(ngModel)]="Seguimiento.id_project" formControlName="id_project">
+                                        <option *ngFor="let project of Project" [value]="project._id">{{project.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col"></div>
+                        </div>
+                        <div class="row mx-auto">
+                            <div class="col md-4">
+                                <div class="form-group">
+                                    <label>Calificación</label>
+                                    <input type="number" class="form-control" [(ngModel)]="Seguimiento.qualification"
+                                        formControlName="qualification">
+                                </div>
+                            </div>
+                            <div class="col md-4">
+                                <div class="form-group">
+                                    <label>Mes</label>
+                                    <input type="month" class="form-control" [(ngModel)]="Seguimiento.month"
+                                        formControlName="month">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mx-auto">
+                            <div class="col md-4">
+                                <div class="form-group">
+                                    <label>Observacion</label>
+                                    <textarea class="form-control" [(ngModel)]="Seguimiento.observacion"
+                                        formControlName="observacion"></textarea>
+                                </div>
+                            </div>
+                            <div class="col md-4">
+                                <div class="form-group">
+                                    <label>Novedades</label>
+                                    <textarea class="form-control" [(ngModel)]="Seguimiento.novedades"
+                                        formControlName="novedades"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mx-auto">
+                            <div class="col md-4">
+                                <label>Resultados Alcanzados</label>
+                                <div class="anadidos">
+                                    <div *ngIf="bandera==false">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr *ngFor="let res of Seguimiento.result_reach">
+                                                    <td>{{res}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div *ngIf="bandera==true">
+                                    <div class="anadidos" *ngFor="let res of resultados">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr *ngFor="let res of res.resultados_esperados">
+                                                    <td>{{res}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col md-4">
+                                <label>Resultados en porcentaje</label>
+                                <select class="form-control" [(ngModel)]="Seguimiento.percentage"
+                                    formControlName="percentage">
+                                    <option [value]="10">10%</option>
+                                    <option [value]="20">20%</option>
+                                    <option [value]="30">30%</option>
+                                    <option [value]="40">40%</option>
+                                    <option [value]="50">50%</option>
+                                    <option [value]="60">60%</option>
+                                    <option [value]="70">70%</option>
+                                    <option [value]="80">80%</option>
+                                    <option [value]="90">90%</option>
+                                    <option [value]="100">100%</option>
+                                </select>
+                            </div>
+                        </div><br>
+                        <div class="row mx-auto">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
+                            </div>
+                            <div class="col">
+                                <button type="reset" class="btn btn-primary" (click)="limpiar()"><i class="fas fa-eraser"></i>Limpiar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col lg-6">
+            <div  class="tablaa">
+                <div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Proyecto</th>
+                                <th scope="col">Calificación</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let seguir of Seguidos" (click)="datos_seguimiento(seguir)">
+                                <td></td>
+                                <td>{{seguir.qualification}}</td>
+                                <td><button class="btn btn-dark" id="delete" type="button" data-toggle="modal"
+                                        data-target="#updateOrSave"><i class="fas fa-info"></i> Detalle</button>
+                                </td>
+                                <td><button type="button" data-toggle="modal" data-target="#exampleModal"
+                                        class="btn btn-dark" id="delete"><i class="fas fa-trash"></i>
+                                        Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal para elimiar-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Esta Seguro de eliminar los Datos ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-dark" data-dismiss="modal" (click)="deleteSeguimientos()">Si</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

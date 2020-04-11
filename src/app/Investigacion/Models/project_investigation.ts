@@ -1,7 +1,7 @@
 export class ProjectInvestigation {
     _id:string;
+    name:string;
     personal_involucrado:[{}];
-    grupo_investigacion:[{}];
     fecha_inicio:string;
     fecha_fin:string;
     linea_investigacion:string;
@@ -13,5 +13,6 @@ export class ProjectInvestigation {
     presupuesto:string;
     cronograma:string;
     articulos_generados:[{}];
-    estado_proyecto:string
+    estado_proyecto:string;
+    id_group:string
 }

@@ -4,5 +4,5 @@ export interface GroupInvestigation {
     create_date:string,
     menbers:[{}],
     linea_investigacion:string,
-    project_generados:string
+    project_generados:[{}]
 }

@@ -14,8 +14,8 @@ export class ProyectoInvestigacionComponent implements OnInit {
 
   Project: ProjectInvestigation = {
     _id:null,
+    name:"",
     personal_involucrado: [{}],
-    grupo_investigacion: [{}],
     fecha_inicio: "",
     fecha_fin: "",
     linea_investigacion: "",
@@ -27,16 +27,19 @@ export class ProyectoInvestigacionComponent implements OnInit {
     presupuesto: "",
     cronograma: "",
     articulos_generados: [{}],
-    estado_proyecto: ""
+    estado_proyecto: "",
+    id_group:""
   }
   form_project: FormGroup
   saveProject: any = []
   aProject:any = []
+  Users:any=[]
+  Groups:any=[]
   constructor(private form: FormBuilder, private service: InvestigacionService, private snackBar: MatSnackBar,private routerActivated:ActivatedRoute) {
     this.form_project = this.form.group({
       _id:null,
-      personal_involucrado: [{}],
-      grupo_investigacion: [{}],
+      name:"",
+      personal_involucrado: [],
       fecha_inicio: "",
       fecha_fin: "",
       linea_investigacion: "",
@@ -44,11 +47,12 @@ export class ProyectoInvestigacionComponent implements OnInit {
       justificacion: "",
       objetivos: "",
       materiales: "",
-      resultados_esperados: [{}],
+      resultados_esperados: [],
       presupuesto: "",
       cronograma: "",
-      articulos_generados: [{}],
-      estado_proyecto: ""
+      articulos_generados: [],
+      estado_proyecto: "",
+      id_group:""
     })
   }
 
@@ -58,16 +62,26 @@ export class ProyectoInvestigacionComponent implements OnInit {
     });*/
     this.noShow()
     this.allProyect()
+    this.getUsers()
+    this.allGroups()
   }
   quitResultados(i) {
-    this.Project.resultados_esperados.splice(i, 1)
+    this.Project.resultados_esperados.splice(i, 1);
   }
   async addResultado(event) {
     await this.Project.resultados_esperados.push(event.value);
+    
+  }
+  involucrados(user){
+    this.Project.personal_involucrado.push(user)
+  }
+  quitInvo(i){
+    this.Project.personal_involucrado.splice(i,1)
   }
   noShow() {
-    this.Project.resultados_esperados.splice(0,5);
-    this.Project.articulos_generados.splice(0,5);
+    this.Project.resultados_esperados.splice(0,10);
+    this.Project.articulos_generados.splice(0,10);
+    this.Project.personal_involucrado.splice(0,10);
   }
   saveOrupdate(){
     if(this.Project._id == null){
@@ -99,14 +113,14 @@ export class ProyectoInvestigacionComponent implements OnInit {
   }
   detailProyect(project:ProjectInvestigation){
     this.Project = Object.assign({},project);
+    this.Project.fecha_fin = moment(this.Project.fecha_fin).format('YYYY-MM-DD')
+    this.Project.fecha_inicio = moment(this.Project.fecha_inicio).format('YYYY-MM-DD')
     if(this.Project.estado_proyecto == "Ejecutandose"){
       this.Project.estado_proyecto = "E"
     }
     else if(this.Project.estado_proyecto == "Finalizado"){
       this.Project.estado_proyecto = "F"
     }
-    this.Project.fecha_fin = moment(this.Project.fecha_fin).format('YYYY-MM-DD')
-    this.Project.fecha_inicio = moment(this.Project.fecha_inicio).format('YYYY-MM-DD')
   }
   updateProject(){
     this.service.updateProjectInvestigation(this.Project).subscribe(data=>{
@@ -130,5 +144,15 @@ export class ProyectoInvestigacionComponent implements OnInit {
         this.noShow()
     })
   }
-
+  getUsers(){
+    this.service.getUsers().subscribe(data=>{
+      this.Users = data
+      console.log(data)
+    })
+  }
+  allGroups(){
+    this.service.allGroupInvestigation().subscribe(data=>{
+      this.Groups = data
+    })
+  }
 }

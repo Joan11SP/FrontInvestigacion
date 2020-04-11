@@ -7,6 +7,8 @@ import { GrupoInvestigacionComponent } from './Investigacion/home/grupo-investig
 import { ProyectoInvestigacionComponent } from './Investigacion/home/proyecto-investigacion/proyecto-investigacion.component';
 import { GuardsGuard } from './Investigacion/Guards/guards.guard';
 import { NavegacionComponent } from './Investigacion/navegacion/navegacion.component';
+import { SeguimientoComponent } from './Investigacion/home/seguimiento/seguimiento.component';
+import { ArticuloComponent } from './Investigacion/home/articulo/articulo.component';
 
 
 const routes: Routes = [
@@ -14,22 +16,25 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
 
   {
-    path: "home", component: HomeComponent, canActivate: [GuardsGuard]
+    path: "home", component: HomeComponent
   },
   {
-    path: "users", component: UsuariosComponent, canActivate: [GuardsGuard]
+    path: "users", component: UsuariosComponent
   },
   {
-    path: "groupInvestigation", component: GrupoInvestigacionComponent, canActivate: [GuardsGuard]
+    path: "groupInvestigation", component: GrupoInvestigacionComponent
   },
   {
-    path: "proyectoInvestigacion", component: ProyectoInvestigacionComponent, canActivate: [GuardsGuard]
+    path: "proyectoInvestigacion", component: ProyectoInvestigacionComponent
   },
   {
-    path: "proyectoInvestigacion/:id", component: ProyectoInvestigacionComponent, canActivate: [GuardsGuard]
+    path: "proyectoInvestigacion/:id", component: ProyectoInvestigacionComponent
   },
   {
-    path:"navegacion",component:NavegacionComponent, canActivate: [GuardsGuard]
+    path:"seguimiento",component:SeguimientoComponent
+  },
+  {
+    path:"articulo",component:ArticuloComponent
   }
 
 ];

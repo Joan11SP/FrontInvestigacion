@@ -4,12 +4,14 @@ import { User } from '../Models/users';
 import { GroupInvestigation } from '../Models/group_investigation';
 import { ProjectInvestigation } from '../Models/project_investigation';
 import { Login } from '../Models/Login';
+import { Seguimiento } from '../Models/seguimineto';
 @Injectable({
   providedIn: 'root'
 })
 export class InvestigacionService {
 
-  Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
+  //Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
+  Url = 'http://localhost:3000/SistemaInvestigacion/'
   constructor(private http:HttpClient) { }
 
   getCarrers(){
@@ -28,7 +30,10 @@ export class InvestigacionService {
     return this.http.post(`${this.Url}deletePerson`,user)
   }
   createGroupInvestigation(groupIn:GroupInvestigation){
-    return this.http.post(`${this.Url}newGroupInvestigacion`,groupIn)
+    return this.http.post(`${this.Url}newGroupInvestigation`,groupIn)
+  }
+  aGroupInvestigation(group){
+    return this.http.post(`${this.Url}aGroupInvestigation`,group);
   }
   allGroupInvestigation(){
     return this.http.get(`${this.Url}allGroupInvestigation`);
@@ -45,7 +50,7 @@ export class InvestigacionService {
   allProjectInvestigation(){
     return this.http.get(`${this.Url}allProjectInvestigation`);
   }
-  OneProjectInvestigation(project:ProjectInvestigation){
+  OneProjectInvestigation(project){
     return this.http.post(`${this.Url}oneProjectInvestigation`,project);
   }
   updateProjectInvestigation(project:ProjectInvestigation){
@@ -56,5 +61,14 @@ export class InvestigacionService {
   }
   getLogin(login:Login){
     return this.http.post(`${this.Url}login`,login);
+  }
+  newSeguimiento(seguir:Seguimiento){
+    return this.http.post(`${this.Url}newSeguimientos`,seguir);
+  }
+  allSeguimiento(){
+    return this.http.get(`${this.Url}allSeguimientos`);
+  }
+  deleteSeguimiento(id){
+    return this.http.post(`${this.Url}deleteSeguimientos`,id);
   }
 }

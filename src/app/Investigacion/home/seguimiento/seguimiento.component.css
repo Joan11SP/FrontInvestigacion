@@ -1,0 +1,11 @@
+.anadidos {
+    max-height: 100px;
+    position: relative;
+    max-width: 300px;
+    overflow: auto;
+}
+.tablaa {
+    max-height: 600px;
+    position: relative;
+    overflow: auto;
+}

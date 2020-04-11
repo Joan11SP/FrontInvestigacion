@@ -35,7 +35,7 @@ export class UsuariosComponent implements OnInit {
       _id:null,
       dni:[ "",Validators.required],
       names: ["",Validators.required],
-      password:["",Validators.required],
+      //password:["",Validators.required],
       email: ['', [Validators.required, Validators.pattern(this.mail)]],
       gender:[ "",Validators.required],
       phone:[ "",Validators.required],

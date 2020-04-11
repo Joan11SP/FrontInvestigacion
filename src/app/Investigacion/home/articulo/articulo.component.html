@@ -1,8 +1,9 @@
+
 <br>
 <div class="container">
     <div class="card">
         <div class="card-title">
-            <h3 class="text-center">Proyectos de Investigación</h3>
+            <h3 class="text-center">Artículos</h3>
         </div>
         <div class="card-body">
             <div class="container projects" style="margin-left: 22%;">
@@ -20,10 +21,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let project of aProject" (click)="detailProyect(project)">
-                                    <td>{{project.name}}</td>
-                                    <td>{{project.linea_investigacion}}</td>
-                                    <td>{{project.estado_proyecto}}</td>
+                                <tr >
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td><button class="btn btn-dark" id="delete" type="button" data-toggle="modal"
                                             data-target="#updateOrSave"><i class="fas fa-user-edit"></i> Editar</button>
                                     </td>
@@ -53,21 +54,20 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
                                 <button type="submit" class="btn btn-dark" data-dismiss="modal"
-                                    (click)="deleteProject()">Si</button>
+                                    >Si</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div><br>
             <br>
-            <form [formGroup]="form_project" (ngSubmit)="saveOrupdate()">
-                <input type="text" class="form-control" style="display: none;" [(ngModel)]="Project._id"
-                    formControlName="_id">
+            <form >
+                <input type="text" class="form-control" style="display: none;" >
                 <div class="row mx-auto">
                     <div class="col">
                         <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" class="form-control" [(ngModel)]="Project.name" formControlName="name">
+                            <label>Nombre del Artículo</label>
+                            <input type="text" class="form-control">
                         </div>
                     </div>
                     <div class="col"></div>
@@ -76,9 +76,9 @@
                 <div class="row mx-auto">
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Grupo de Investigación</label>
-                            <select class="form-control" [(ngModel)]="Project.id_group" formControlName="id_group">
-                                <option *ngFor="let group of Groups" [value]="group._id">{{group.name}}</option>
+                            <label for="exampleInputEmail1">Proyecto de Investigación</label>
+                            <select class="form-control">
+                                <option ></option>
                             </select>
                         </div>
                     </div>
@@ -88,8 +88,8 @@
                             <div class="anadidos">
                                 <table class="table table-hover">
                                     <tbody>
-                                        <tr *ngFor="let user of Users" (click)="involucrados(user.names)">
-                                            <td>{{user.names}}</td>
+                                        <tr >
+                                            <td></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -104,9 +104,9 @@
                                     <div class="card-body">
                                         <table class="table">
                                             <tbody>
-                                                <tr *ngFor="let invo of Project.personal_involucrado;let i=index">
-                                                    <td>{{invo}}</td>
-                                                    <td><i class="fas fa-backspace" (click)="quitInvo(i)"></i>
+                                                <tr >
+                                                    <td></td>
+                                                    <td><i class="fas fa-backspace"></i>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -120,46 +120,46 @@
                 <div class="row mx-auto">
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Fecha de Inicio</label>
-                            <input type="date" class="form-control" [(ngModel)]="Project.fecha_inicio"
-                                formControlName="fecha_inicio">
+                            <label for="exampleInputEmail1">Fecha de Aceptación</label>
+                            <input type="date" class="form-control">
                         </div>
                     </div>
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Fecha de Termino</label>
-                            <input type="date" class="form-control" [(ngModel)]="Project.fecha_fin"
-                                formControlName="fecha_fin">
+                            <label for="exampleInputEmail1">Fecha de Publicación</label>
+                            <input type="date" class="form-control" >
                         </div>
                     </div>
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Linea de Investigación</label>
-                            <input type="text" class="form-control" [(ngModel)]="Project.linea_investigacion"
-                                formControlName="linea_investigacion">
+                            <label for="exampleInputEmail1">Tipo de Documento</label>
+                            <select class="form-control">
+                                <option ></option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="row mx-auto">
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Introducción</label>
-                            <textarea type="text" class="form-control" style="height: 100px;"
-                                [(ngModel)]="Project.introduccion" formControlName="introduccion"> </textarea>
+                            <label>Año</label>
+                            <select class="form-control">
+                                <option></option>
+                            </select>
                         </div>
                     </div>
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Justificación</label>
                             <textarea type="text" class="form-control" style="height: 100px;"
-                                [(ngModel)]="Project.justificacion" formControlName="justificacion"> </textarea>
+                                > </textarea>
                         </div>
                     </div>
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1"> Materiales</label>
                             <textarea type="text" class="form-control" style="height: 100px;"
-                                [(ngModel)]="Project.materiales" formControlName="materiales"> </textarea>
+                               > </textarea>
                         </div>
                     </div>
                 </div>
@@ -167,35 +167,22 @@
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Objetivos</label>
-                            <textarea class="form-control" [(ngModel)]="Project.objetivos"
-                                formControlName="objetivos"></textarea>
+                            <textarea class="form-control" ></textarea>
                         </div>
                     </div>
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Presupuesto</label>
-                            <input type="text" class="form-control" [(ngModel)]="Project.presupuesto"
-                                formControlName="presupuesto">
+                            <input type="text" class="form-control" >
                         </div>
                     </div>
-                    <div class="col md-2">
-                        <label>Resultados Esperados</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" #result>
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fab fa-telegram-plane" (click)="addResultado(result)"></i></button>
-                            </span>
-
-                        </div>
-                    </div>
+                    <div class="col md-6"></div>
                 </div>
                 <div class="row mx-auto">
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Cronograma</label>
-                            <input type="text" class="form-control" [(ngModel)]="Project.cronograma"
-                                formControlName="cronograma">
+                            <input type="text" class="form-control" >
                         </div>
                     </div>
 
@@ -205,34 +192,13 @@
                             <input type="text" class="form-control">
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label>Resultados agregados</label>
-                            <div class="anadidos">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <table class="table">
-                                            <tbody>
-                                                <tr *ngFor="let result of Project.resultados_esperados;let i=index">
-                                                    <td>{{result}}</td>
-                                                    <td><i class="fas fa-backspace" (click)="quitResultados(i)"></i>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="col md-6"></div>
                 </div>
                 <div class="row mx-auto">
                     <div class="col md-6">
                         <label>Estado del Proyecto</label>
-                        <select class="form-control" [(ngModel)]="Project.estado_proyecto"
-                            formControlName="estado_proyecto">
-                            <option value="E">Ejecutandose</option>
-                            <option value="F">Finalizado</option>
+                        <select class="form-control" >
+                            <option></option>
                         </select>
                     </div>
                     <div class="col md-6"></div>
