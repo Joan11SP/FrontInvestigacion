@@ -1,0 +1,5 @@
+.anadidos {
+    max-height: 100px;
+    position: relative;
+    overflow: auto;
+}

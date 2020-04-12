@@ -1,0 +1,20 @@
+export class Articulo{
+    _id:string;
+    name:string;
+    id_project:string;
+    personas:[{}]
+    fecha_aceptacion:string;
+    fecha_publicacion:string;
+    tipo_document:string;
+    indice:string;
+    anio:number;
+    idioma:string;
+    pais:string;   
+    doi:string;
+    issn:string;
+    sjr:string;
+    isbn:string;
+    link:string;
+    revista:string;
+    quartile:string;     
+}

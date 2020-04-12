@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { User } from '../Models/users';
 import { GroupInvestigation } from '../Models/group_investigation';
 import { ProjectInvestigation } from '../Models/project_investigation';
 import { Login } from '../Models/Login';
 import { Seguimiento } from '../Models/seguimineto';
+import { Articulo } from '../Models/articulos';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,8 +13,9 @@ export class InvestigacionService {
 
   //Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
   Url = 'http://localhost:3000/SistemaInvestigacion/'
+  UrlCountry='http://country.io/names.json'
   constructor(private http:HttpClient) { }
-
+  headers=new HttpHeaders()
   getCarrers(){
     return this.http.get(`${this.Url}allCarrer`);
   }
@@ -70,5 +72,17 @@ export class InvestigacionService {
   }
   deleteSeguimiento(id){
     return this.http.post(`${this.Url}deleteSeguimientos`,id);
+  }
+  getCountries(){
+    const option={
+      'Content-Type':'application/json'
+    }
+    return this.http.get(`${this.UrlCountry}`,{headers:option})
+  }
+  createArticle(article:Articulo){
+    return this.http.post(`${this.Url}newArticle`,article);
+  }
+  allArticles(){
+    return this.http.get(`${this.Url}allArticle`);
   }
 }

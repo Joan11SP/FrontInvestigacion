@@ -35,6 +35,7 @@ export class ProyectoInvestigacionComponent implements OnInit {
   aProject:any = []
   Users:any=[]
   Groups:any=[]
+  articulos:any=[]
   constructor(private form: FormBuilder, private service: InvestigacionService, private snackBar: MatSnackBar,private routerActivated:ActivatedRoute) {
     this.form_project = this.form.group({
       _id:null,
@@ -121,6 +122,9 @@ export class ProyectoInvestigacionComponent implements OnInit {
     else if(this.Project.estado_proyecto == "Finalizado"){
       this.Project.estado_proyecto = "F"
     }
+    this.service.OneProjectInvestigation(project).subscribe(data=>{
+      this.articulos=data
+    })
   }
   updateProject(){
     this.service.updateProjectInvestigation(this.Project).subscribe(data=>{

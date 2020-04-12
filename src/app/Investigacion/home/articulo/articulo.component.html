@@ -1,4 +1,3 @@
-
 <br>
 <div class="container">
     <div class="card">
@@ -14,15 +13,15 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Linea de Investigación</th>
-                                    <th scope="col">Estado</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr >
-                                    <td></td>
+                                <tr *ngFor="let article of Articulos" (click)="detail_article(article)">
+                                    <td>{{article.name}}</td>
                                     <td></td>
                                     <td></td>
                                     <td><button class="btn btn-dark" id="delete" type="button" data-toggle="modal"
@@ -53,21 +52,20 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-dark" data-dismiss="modal"
-                                    >Si</button>
+                                <button type="submit" class="btn btn-dark" data-dismiss="modal">Si</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div><br>
             <br>
-            <form >
-                <input type="text" class="form-control" style="display: none;" >
+            <form [formGroup]="form_articulo" (ngSubmit)="createArticle()">
+                <input type="text" class="form-control" style="display: none;">
                 <div class="row mx-auto">
                     <div class="col">
                         <div class="form-group">
                             <label>Nombre del Artículo</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" [(ngModel)]="Articulo.name" formControlName="name">
                         </div>
                     </div>
                     <div class="col"></div>
@@ -77,8 +75,8 @@
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Proyecto de Investigación</label>
-                            <select class="form-control">
-                                <option ></option>
+                            <select class="form-control" [(ngModel)]="Articulo.id_project" formControlName="id_project">
+                                <option *ngFor="let project of Project" [value]="project._id">{{project.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -88,8 +86,8 @@
                             <div class="anadidos">
                                 <table class="table table-hover">
                                     <tbody>
-                                        <tr >
-                                            <td></td>
+                                        <tr *ngFor="let user of User" (click)="changePerson(user.names)">
+                                            <td>{{user.names}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -104,9 +102,9 @@
                                     <div class="card-body">
                                         <table class="table">
                                             <tbody>
-                                                <tr >
-                                                    <td></td>
-                                                    <td><i class="fas fa-backspace"></i>
+                                                <tr *ngFor="let person of Articulo.personas;let i = index">
+                                                    <td>{{person}}</td>
+                                                    <td><i class="fas fa-backspace" (click)="quitPerson(i)"></i>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -121,21 +119,19 @@
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Fecha de Aceptación</label>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" [(ngModel)]="Articulo.fecha_aceptacion" formControlName="fecha_aceptacion">
                         </div>
                     </div>
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Fecha de Publicación</label>
-                            <input type="date" class="form-control" >
+                            <input type="date" class="form-control" [(ngModel)]="Articulo.fecha_publicacion" formControlName="fecha_publicacion">
                         </div>
                     </div>
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Tipo de Documento</label>
-                            <select class="form-control">
-                                <option ></option>
-                            </select>
+                            <label>DOI</label>
+                            <input type="text" class="form-control" [(ngModel)]="Articulo.doi" formControlName="doi">
                         </div>
                     </div>
                 </div>
@@ -143,66 +139,81 @@
                     <div class="col md-6">
                         <div class="form-group">
                             <label>Año</label>
-                            <select class="form-control">
+                            <select class="form-control" [(ngModel)]="Articulo.anio" formControlName="anio">
+                                <option *ngFor="let i of Years" [value]="i">{{i}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label>Idioma</label>
+                            <select class="form-control" [(ngModel)]="Articulo.idioma" formControlName="idioma">
                                 <option></option>
                             </select>
                         </div>
                     </div>
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Justificación</label>
-                            <textarea type="text" class="form-control" style="height: 100px;"
-                                > </textarea>
-                        </div>
-                    </div>
-                    <div class="col md-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1"> Materiales</label>
-                            <textarea type="text" class="form-control" style="height: 100px;"
-                               > </textarea>
+                            <label>Pais</label>
+                            <select class="form-control" [(ngModel)]="Articulo.pais" formControlName="pais">
+                                <option></option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 <div class="row mx-auto">
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Objetivos</label>
-                            <textarea class="form-control" ></textarea>
+                            <label for="exampleInputEmail1">Link del Artículo</label>
+                            <input type="text" class="form-control" [(ngModel)]="Articulo.link" formControlName="link">
                         </div>
                     </div>
                     <div class="col md-6">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Presupuesto</label>
-                            <input type="text" class="form-control" >
+                            <label for="exampleInputEmail1">Revista - Congreso</label>
+                            <input type="text" class="form-control" [(ngModel)]="Articulo.revista" formControlName="revista">
                         </div>
                     </div>
-                    <div class="col md-6"></div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Quartile</label>
+                            <input type="text" class="form-control" [(ngModel)]="Articulo.quartile" formControlName="quartile">
+                        </div>
+                    </div>
                 </div>
                 <div class="row mx-auto">
-                    <div class="col md-6">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Cronograma</label>
-                            <input type="text" class="form-control" >
-                        </div>
-                    </div>
 
                     <div class="col md-6">
                         <div class="form-group">
-                            <label>Artículo Generados</label>
-                            <input type="text" class="form-control">
+                            <label>ISSN</label>
+                            <input type="text" class="form-control" [(ngModel)]="Articulo.issn" formControlName="issn">
                         </div>
                     </div>
-                    <div class="col md-6"></div>
+                    <div class="col md-6">
+                        <label>SJR ( SCImago Journal Rank )</label>
+                        <input type="text" class="form-control" [(ngModel)]="Articulo.sjr" formControlName="sjr">
+                    </div>
+                    <div class="col md-6">
+                        <label>ISBN</label>
+                        <input type="text" class="form-control" [(ngModel)]="Articulo.isbn" formControlName="isbn">
+                    </div>
                 </div>
                 <div class="row mx-auto">
                     <div class="col md-6">
-                        <label>Estado del Proyecto</label>
-                        <select class="form-control" >
-                            <option></option>
+                        <label>Indice</label>
+                        <select class="form-control" [(ngModel)]="Articulo.indice" formControlName="indice">
+                            <option *ngFor="let indice of Indice" [value]="indice.id">{{indice.name}}</option>
                         </select>
                     </div>
-                    <div class="col md-6"></div>
-                    <div class="col md-6"></div>
+                    <div class="col md-6">
+                        <label>Tipo de Documento</label>
+                        <select class="form-control" [(ngModel)]="Articulo.tipo_document" formControlName="tipo_document">
+                            <option *ngFor="let doc of Documento" [value]="doc.id">{{doc.documento}}</option>
+                        </select>
+                    </div>
+                    <div class="col md-6">
+
+                    </div>
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Submit</button>

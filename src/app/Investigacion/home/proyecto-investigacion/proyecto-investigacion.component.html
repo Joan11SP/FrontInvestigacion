@@ -202,7 +202,19 @@
                     <div class="col md-6">
                         <div class="form-group">
                             <label>Artículo Generados</label>
-                            <input type="text" class="form-control">
+                            <div class="anadidos" *ngFor="let result of articulos">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr *ngFor="let res of result.articulos_generados">
+                                                    <td>{{res}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col">
