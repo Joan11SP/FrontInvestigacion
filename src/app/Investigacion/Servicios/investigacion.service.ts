@@ -85,4 +85,10 @@ export class InvestigacionService {
   allArticles(){
     return this.http.get(`${this.Url}allArticle`);
   }
+  updateArticles(article:Articulo){
+    return this.http.post(`${this.Url}updateArticle`,article);
+  }
+  deleteArticle(article:Articulo){
+    return this.http.post(`${this.Url}deleteArticle`,article);
+  }
 }

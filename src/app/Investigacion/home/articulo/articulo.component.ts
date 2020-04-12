@@ -3,6 +3,7 @@ import { InvestigacionService } from '../../Servicios/investigacion.service';
 import { Articulo } from '../../Models/articulos';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import * as moment from 'moment'
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-articulo',
   templateUrl: './articulo.component.html',
@@ -16,8 +17,9 @@ export class ArticuloComponent implements OnInit {
   public User:any=[]
   public Articulos:any=[]
   public Years=[{}];
+  public save_update:any=[]
   public Articulo:Articulo={
-    _id:"",
+    _id:null,
     name:"",
     id_project:"",
     personas:[{}],
@@ -37,7 +39,7 @@ export class ArticuloComponent implements OnInit {
     quartile:"",     
   }
   public form_articulo:FormGroup;
-  constructor(private service:InvestigacionService, private form:FormBuilder) { 
+  constructor(private service:InvestigacionService, private form:FormBuilder,private snackBar:MatSnackBar) { 
     this.Documento=[
       {id:"A",documento:"Artículo"},
       {id:"P",documento:"Poster"}
@@ -48,7 +50,7 @@ export class ArticuloComponent implements OnInit {
       {id:"S",name:"Scopus"}
     ];
     this.form_articulo = this.form.group({
-      _id:"",
+      _id:null,
       name:"",
       id_project:"",
       personas:[],
@@ -91,9 +93,41 @@ export class ArticuloComponent implements OnInit {
       this.Articulos = data
     })
   }
+  saveOrupdate(){
+    if(this.Articulo._id==null){
+      this.createArticle();
+    }else{
+      this.updateArticle();
+    }
+  }
   createArticle(){
     this.service.createArticle(this.Articulo).subscribe(data=>{
-      console.log(data)
+      this.save_update = data
+      if(this.save_update.mensaje == 1){
+        this.openSnackBar('Guardado correctamente');
+        this.allArticles();
+        this.noShow();
+      }
+    })
+  }
+  updateArticle(){
+    this.service.updateArticles(this.Articulo).subscribe(data=>{
+      this.save_update = data
+      if(this.save_update.nModified == 1){
+        this.openSnackBar('Actualizado correctamente');
+        this.allArticles();
+        this.noShow();
+      }
+    })
+  }
+  deleteArticle(){
+    this.service.deleteArticle(this.Articulo).subscribe(data=>{
+      this.save_update=data
+      if(this.save_update.mensaje == 1){
+        this.openSnackBar('Eliminado');
+        this.allArticles();
+        this.noShow();
+      }
     })
   }
   changePerson(user){
@@ -111,11 +145,17 @@ export class ArticuloComponent implements OnInit {
     const year = moment().year();
     for(var i = 1995;i<=year;i++){
         this.Years.push(i);
-        console.log(i)
     }
   }
   noShow(){
     this.Years.splice(0,1)
     this.Articulo.personas.splice(0,1);
+    this.form_articulo.reset();
+    this.Articulo.anio=null
+  }
+  openSnackBar(message) {
+    this.snackBar.open(message, '', {
+      duration: 2000
+    });
   }
 }

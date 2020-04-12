@@ -2,10 +2,10 @@
 <div class="container">
     <div class="card">
         <div class="card-title">
-            <h3 class="text-center">Artículos</h3>
+            <h3 class="text-center p-2">Artículos</h3>
         </div>
         <div class="card-body">
-            <div class="container projects" style="margin-left: 22%;">
+            <div class="container articles" style="margin-left: 22%;">
 
                 <div class="row">
                     <div class="col-md-8">
@@ -52,15 +52,16 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-dark" data-dismiss="modal">Si</button>
+                                <button type="submit" class="btn btn-dark" data-dismiss="modal"(click)="deleteArticle()">Si</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div><br>
             <br>
-            <form [formGroup]="form_articulo" (ngSubmit)="createArticle()">
-                <input type="text" class="form-control" style="display: none;">
+            <form [formGroup]="form_articulo" (ngSubmit)="saveOrupdate()">
+                <input type="text" class="form-control" style="display: none;" [(ngModel)]="Articulo._id"
+                    formControlName="_id">
                 <div class="row mx-auto">
                     <div class="col">
                         <div class="form-group">

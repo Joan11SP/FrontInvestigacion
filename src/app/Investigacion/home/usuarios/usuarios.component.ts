@@ -35,7 +35,7 @@ export class UsuariosComponent implements OnInit {
       _id:null,
       dni:[ "",Validators.required],
       names: ["",Validators.required],
-      //password:["",Validators.required],
+      password:["",Validators.required],
       email: ['', [Validators.required, Validators.pattern(this.mail)]],
       gender:[ "",Validators.required],
       phone:[ "",Validators.required],
@@ -57,7 +57,6 @@ export class UsuariosComponent implements OnInit {
     this.service.getCarrers().subscribe(data => {
       this.carreras
        = data
-       console.log(data)
     })
   }
   //verifica cuando se debe actualizar o agregar usuarios
@@ -72,7 +71,6 @@ export class UsuariosComponent implements OnInit {
   allUser(){
     this.service.getUsers().subscribe(data=>{
       this.allUsers=data
-      console.log(data)
     })
   }
   //Obtener un usuario

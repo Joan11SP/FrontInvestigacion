@@ -80,9 +80,9 @@ export class ProyectoInvestigacionComponent implements OnInit {
     this.Project.personal_involucrado.splice(i,1)
   }
   noShow() {
-    this.Project.resultados_esperados.splice(0,10);
-    this.Project.articulos_generados.splice(0,10);
-    this.Project.personal_involucrado.splice(0,10);
+    this.Project.resultados_esperados.splice(0,50);
+    this.Project.articulos_generados.splice(0,50);
+    this.Project.personal_involucrado.splice(0,50);
   }
   saveOrupdate(){
     if(this.Project._id == null){
@@ -142,7 +142,6 @@ export class ProyectoInvestigacionComponent implements OnInit {
   deleteProject(){
     this.service.deleteProjectInvestigation(this.Project).subscribe(data=>{
       this.saveProject = data
-      console.log(data)
       this.allProyect();
         this.form_project.reset();
         this.noShow()
@@ -151,7 +150,6 @@ export class ProyectoInvestigacionComponent implements OnInit {
   getUsers(){
     this.service.getUsers().subscribe(data=>{
       this.Users = data
-      console.log(data)
     })
   }
   allGroups(){

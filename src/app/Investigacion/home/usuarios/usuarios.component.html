@@ -155,6 +155,12 @@
                                                 <input type="text" class="form-control" [(ngModel)]="User.orcid" formControlName="orcid">
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Password:</label>
+                                                <input type="password" class="form-control" [(ngModel)]="User.password" formControlName="password">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" [disabled]="!form_user.valid" class="btn btn-dark"><i

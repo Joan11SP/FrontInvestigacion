@@ -16,6 +16,7 @@ import { LoginComponent } from './Investigacion/login/login.component';
 import { GuardsGuard } from './Investigacion/Guards/guards.guard';
 import { SeguimientoComponent } from './Investigacion/home/seguimiento/seguimiento.component';
 import { ArticuloComponent } from './Investigacion/home/articulo/articulo.component';
+import { LibroComponent } from './Investigacion/home/libro/libro.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ArticuloComponent } from './Investigacion/home/articulo/articulo.compon
     ProyectoInvestigacionComponent,
     LoginComponent,
     SeguimientoComponent,
-    ArticuloComponent
+    ArticuloComponent,
+    LibroComponent
   ],
   imports: [
     BrowserModule,
