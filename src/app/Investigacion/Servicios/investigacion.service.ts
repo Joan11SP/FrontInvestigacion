@@ -6,6 +6,9 @@ import { ProjectInvestigation } from '../Models/project_investigation';
 import { Login } from '../Models/Login';
 import { Seguimiento } from '../Models/seguimineto';
 import { Articulo } from '../Models/articulos';
+import { Libro } from '../Models/libro';
+import { Convenio } from '../Models/convenio';
+import { Capacitacion } from '../Models/capacitacion';
 @Injectable({
   providedIn: 'root'
 })
@@ -90,5 +93,38 @@ export class InvestigacionService {
   }
   deleteArticle(article:Articulo){
     return this.http.post(`${this.Url}deleteArticle`,article);
+  }
+  saveBook(book:Libro){
+    return this.http.post(`${this.Url}newBook`,book);
+  }
+  allBooks(){
+    return this.http.get(`${this.Url}allBook`);
+  }
+  updateBook(book:Libro){
+    return this.http.post(`${this.Url}updateBook`,book);
+  }
+  createConvenio(convenio:Convenio){
+    return this.http.post(`${this.Url}newConvenio`,convenio);
+  }
+  updateConvenio(convenio:Convenio){
+    return this.http.post(`${this.Url}updateConvenio`,convenio);
+  }
+  deleteConvenio(id){
+    return this.http.post(`${this.Url}deleteConvenio`,id);
+  }
+  allConvenio(){
+    return this.http.get(`${this.Url}allConvenio`);
+  }
+  createCapacitacion(capacitacion:Capacitacion){
+    return this.http.post(`${this.Url}newCapacitacion`,capacitacion);
+  }
+  updateCapacitacion(capacitacion:Capacitacion){
+    return this.http.post(`${this.Url}updateCapacitacion`,capacitacion);
+  }
+  deleteCapacitacion(id){
+    return this.http.post(`${this.Url}deleteCapacitacion`,id);
+  }
+  allCapacitacion(){
+    return this.http.get(`${this.Url}allCapacitacion`);
   }
 }

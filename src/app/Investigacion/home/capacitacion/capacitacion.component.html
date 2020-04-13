@@ -1,0 +1,122 @@
+<div class="container">
+    <div class="row mx-auto">
+        <div class="col lg-6">
+            <div class="card">
+                <div class="card-title">
+                    <h4 class="text-center p-2">Capacitaciones</h4>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="form_capacitacion" (ngSubmit)="saveOrupdate()">
+                        <input type="text" class="form-control" style="display: none;" [(ngModel)]="Capacitacion._id" formControlName="_id">
+                        <div class="row mx-auto">
+                            <div class="col md-4">
+                                <div class="form-group">
+                                    <label>Nombre de la Capacitación</label>
+                                    <input type="text" class="form-control" [(ngModel)]="Capacitacion.name" formControlName="name">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <label>Instructor</label>
+                                <input type="text" class="form-control" [(ngModel)]="Capacitacion.instructor" formControlName="instructor">
+                            </div>
+                        </div>
+                        <div class="row mx-auto">
+                            <div class="col md-4">
+                                <div class="form-group">
+                                    <label>Persona en Capacitación</label>
+                                    <select class="form-control" [(ngModel)]="Capacitacion.persona" formControlName="persona">
+                                        <option selected>Elegir</option>
+                                        <option *ngFor="let user of User" [value]="user._id">{{user.names}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col md-4">
+                                <div class="form-group">
+                                    <label>Tipo</label>
+                                    <select class="form-control" [(ngModel)]="Capacitacion.tipo" formControlName="tipo">
+                                        <option selected>Elegir</option>
+                                        <option [value]="A">Asistiendo</option>
+                                        <option [value]="F">Aprobado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mx-auto">
+                            <div class="col md-4">
+                                <div class="form-group">
+                                    <label>Fecha de inicio</label>
+                                    <input type="date" class="form-control" [(ngModel)]="Capacitacion.fecha_inicio" formControlName="fecha_inicio">
+                                </div>
+                            </div>
+                            <div class="col md-4">
+                                <div class="form-group">
+                                    <label>Fecha de fin</label>
+                                    <input type="date" class="form-control" [(ngModel)]="Capacitacion.fecha_fin" formControlName="fecha_fin">
+                                </div>
+                            </div>
+                        </div><br>
+                        <div class="row mx-auto">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
+                                    Guardar</button>
+                            </div>
+                            <div class="col">
+                                <button type="reset" class="btn btn-primary"><i
+                                        class="fas fa-eraser"></i>Limpiar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col lg-6">
+            <div class="tablaa">
+                <div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Instructor</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let capacitacion of allCapacitacion" (click)="detail_capacitacion(capacitacion)">
+                                <td>{{capacitacion.name}}</td>
+                                <td>{{capacitacion.instructor}}</td>
+                                <td><button class="btn btn-dark" id="delete" type="button" data-toggle="modal"
+                                        data-target="#updateOrSave"><i class="fas fa-info"></i> Detalle</button>
+                                </td>
+                                <td><button type="button" data-toggle="modal" data-target="#exampleModal"
+                                        class="btn btn-dark" id="delete"><i class="fas fa-trash"></i>
+                                        Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Modal para elimiar-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Esta Seguro de eliminar los Datos ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-dark" data-dismiss="modal" (click)="deleteCapacitacion()">Si</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

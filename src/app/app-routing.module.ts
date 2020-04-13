@@ -9,6 +9,9 @@ import { GuardsGuard } from './Investigacion/Guards/guards.guard';
 import { NavegacionComponent } from './Investigacion/navegacion/navegacion.component';
 import { SeguimientoComponent } from './Investigacion/home/seguimiento/seguimiento.component';
 import { ArticuloComponent } from './Investigacion/home/articulo/articulo.component';
+import { LibroComponent } from './Investigacion/home/libro/libro.component';
+import { ConvenioComponent } from './Investigacion/home/convenio/convenio.component';
+import { CapacitacionComponent } from './Investigacion/home/capacitacion/capacitacion.component';
 
 
 const routes: Routes = [
@@ -35,6 +38,15 @@ const routes: Routes = [
   },
   {
     path:"articulo",component:ArticuloComponent
+  },
+  {
+    path:"libros",component:LibroComponent
+  },
+  {
+    path:"convenio",component:ConvenioComponent
+  },
+  {
+    path:"capacitacion",component:CapacitacionComponent
   }
 
 ];

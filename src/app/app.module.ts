@@ -17,6 +17,8 @@ import { GuardsGuard } from './Investigacion/Guards/guards.guard';
 import { SeguimientoComponent } from './Investigacion/home/seguimiento/seguimiento.component';
 import { ArticuloComponent } from './Investigacion/home/articulo/articulo.component';
 import { LibroComponent } from './Investigacion/home/libro/libro.component';
+import { ConvenioComponent } from './Investigacion/home/convenio/convenio.component';
+import { CapacitacionComponent } from './Investigacion/home/capacitacion/capacitacion.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { LibroComponent } from './Investigacion/home/libro/libro.component';
     LoginComponent,
     SeguimientoComponent,
     ArticuloComponent,
-    LibroComponent
+    LibroComponent,
+    ConvenioComponent,
+    CapacitacionComponent
   ],
   imports: [
     BrowserModule,
