@@ -19,34 +19,34 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
 
   {
-    path: "home", component: HomeComponent
+    path: "home", component: HomeComponent,canActivate:[GuardsGuard]
   },
   {
-    path: "users", component: UsuariosComponent
+    path: "users", component: UsuariosComponent,canActivate:[GuardsGuard]
   },
   {
-    path: "groupInvestigation", component: GrupoInvestigacionComponent
+    path: "groupInvestigation", component: GrupoInvestigacionComponent,canActivate:[GuardsGuard]
   },
   {
-    path: "proyectoInvestigacion", component: ProyectoInvestigacionComponent
+    path: "proyectoInvestigacion", component: ProyectoInvestigacionComponent,canActivate:[GuardsGuard]
   },
   {
-    path: "proyectoInvestigacion/:id", component: ProyectoInvestigacionComponent
+    path: "proyectoInvestigacion/:id", component: ProyectoInvestigacionComponent,canActivate:[GuardsGuard]
   },
   {
-    path:"seguimiento",component:SeguimientoComponent
+    path:"seguimiento",component:SeguimientoComponent,canActivate:[GuardsGuard]
   },
   {
-    path:"articulo",component:ArticuloComponent
+    path:"articulo",component:ArticuloComponent,canActivate:[GuardsGuard]
   },
   {
-    path:"libros",component:LibroComponent
+    path:"libros",component:LibroComponent,canActivate:[GuardsGuard]
   },
   {
-    path:"convenio",component:ConvenioComponent
+    path:"convenio",component:ConvenioComponent,canActivate:[GuardsGuard]
   },
   {
-    path:"capacitacion",component:CapacitacionComponent
+    path:"capacitacion",component:CapacitacionComponent,canActivate:[GuardsGuard]
   }
 
 ];
