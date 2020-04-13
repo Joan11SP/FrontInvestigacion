@@ -39,6 +39,8 @@ export class ArticuloComponent implements OnInit {
     quartile:"",     
   }
   public form_articulo:FormGroup;
+  idioma:any=[]
+  pais:any=[]
   constructor(private service:InvestigacionService, private form:FormBuilder,private snackBar:MatSnackBar) { 
     this.Documento=[
       {id:"A",documento:"Artículo"},
@@ -69,6 +71,154 @@ export class ArticuloComponent implements OnInit {
       revista:"",
       quartile:"",     
     })
+    this.idioma= [
+      {
+          "idioma": "Afrikáans",
+          "code": "af"
+      },
+      {
+          "idioma": "Árabe",
+          "code": "ar"
+      },
+      {
+          "idioma": "Bengalí",
+          "code": "bn"
+      },
+      {
+          "idioma": "Búlgaro",
+          "code": "bg"
+      },
+      {
+          "idioma": "Catalán",
+          "code": "ca"
+      },
+      {
+          "idioma": "Danés",
+          "code": "da"
+      },
+      {
+          "idioma": "Neerlandés",
+          "code": "nl"
+      },
+      {
+          "idioma": "Francés",
+          "code": "fr"
+      },
+      {
+          "idioma": "Alemán",
+          "code": "de"
+      },
+      {
+          "idioma": "Griego",
+          "code": "el"
+      },
+      {
+          "idioma": "Italiano",
+          "code": "it"
+      },
+      {
+          "idioma": "Portugués",
+          "code": "pt-br"
+      },
+      {
+          "idioma": "Rumano",
+          "code": "ro"
+      },
+      {
+          "idioma": "Ruso",
+          "code": "ru"
+      },
+      {
+          "idioma": "Serbio",
+          "code": "sr-Latn"
+      },
+      {
+          "idioma": "Eslovaco",
+          "code": "sk"
+      },
+      {
+          "idioma": "Esloveno",
+          "code": "sl"
+      },
+      {
+          "idioma": "Español",
+          "code": "es"
+      },
+      {
+          "idioma": "Galés",
+          "code": "cy"
+      },
+      {
+          "idioma": "Inglés",
+          "code": "en"
+      }
+  ],
+  this.pais= [
+      {
+          "code": "BR",
+          "pais": "Brazil"
+      },
+      {
+          "code": "VE",
+          "pais": "Venezuela"
+      },
+      {
+          "code": "PR",
+          "pais": "Puerto Rico"
+      },
+      {
+          "code": "PT",
+          "pais": "Portugal"
+      },
+      {
+          "code": "PY",
+          "pais": "Paraguay"
+      },
+      {
+          "code": "PA",
+          "pais": "Panama"
+      },
+      {
+          "code": "PE",
+          "pais": "Peru"
+      },
+      {
+          "code": "EC",
+          "pais": "Ecuador"
+      },
+      {
+          "code": "IT",
+          "pais": "Italy"
+      },
+      {
+          "code": "ES",
+          "pais": "Spain"
+      },
+      {
+          "code": "MX",
+          "pais": "Mexico"
+      },
+      {
+          "code": "CL",
+          "pais": "Chile"
+      },
+      {
+          "code": "CU",
+          "pais": "Cuba"
+      },
+      {
+          "code": "UY",
+          "pais": "Uruguay"
+      },
+      {
+          "code": "AR",
+          "pais": "Argentina"
+      },
+      {
+          "code": "CL",
+          "pais": "Colombia"
+      }
+  ]
   }
 
   ngOnInit() {

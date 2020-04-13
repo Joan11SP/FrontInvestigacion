@@ -11,6 +11,8 @@ export class NavegacionComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit() {
+    var token = JSON.parse(localStorage.getItem("sesion"));
+    console.log(token)
   }
   users(){
     this.router.navigate(['users'])

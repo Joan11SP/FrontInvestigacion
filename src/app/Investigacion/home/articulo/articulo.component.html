@@ -149,7 +149,7 @@
                         <div class="form-group">
                             <label>Idioma</label>
                             <select class="form-control" [(ngModel)]="Articulo.idioma" formControlName="idioma">
-                                <option></option>
+                                <option *ngFor="let idioma of idioma" [value]="idioma.code">{{idioma.idioma}}</option>
                             </select>
                         </div>
                     </div>
@@ -157,7 +157,7 @@
                         <div class="form-group">
                             <label>Pais</label>
                             <select class="form-control" [(ngModel)]="Articulo.pais" formControlName="pais">
-                                <option></option>
+                                <option *ngFor="let pais of pais" [value]="pais.code">{{pais.pais}}</option>
                             </select>
                         </div>
                     </div>

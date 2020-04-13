@@ -69,16 +69,15 @@ export class SeguimientoComponent implements OnInit {
   createSeguimiento() {
     this.service.newSeguimiento(this.Seguimiento).subscribe(data => {
       this.Create = data
-      if (this.Create.mensaje == "Guardado") {
         this.openSnackBar('Se guardo Correctamente')
         this.allSeguimientos()
         this.limpiar()
-      }
+      
     })
   }
   allSeguimientos() {
     this.service.allSeguimiento().subscribe(data => {
-      this.Seguidos = data
+      this.Seguidos = data        
     })
   }  
   deleteSeguimientos(){

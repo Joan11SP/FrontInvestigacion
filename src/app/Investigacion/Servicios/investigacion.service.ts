@@ -14,9 +14,9 @@ import { Capacitacion } from '../Models/capacitacion';
 })
 export class InvestigacionService {
 
-  //Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
-  Url = 'http://localhost:3000/SistemaInvestigacion/'
-  UrlCountry='http://country.io/names.json'
+  Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
+  //Url = 'http://localhost:3000/SistemaInvestigacion/'
+  //UrlCountry='http://country.io/names.json'
   constructor(private http:HttpClient) { }
   headers=new HttpHeaders()
   getCarrers(){
@@ -75,12 +75,6 @@ export class InvestigacionService {
   }
   deleteSeguimiento(id){
     return this.http.post(`${this.Url}deleteSeguimientos`,id);
-  }
-  getCountries(){
-    const option={
-      'Content-Type':'application/json'
-    }
-    return this.http.get(`${this.UrlCountry}`,{headers:option})
   }
   createArticle(article:Articulo){
     return this.http.post(`${this.Url}newArticle`,article);

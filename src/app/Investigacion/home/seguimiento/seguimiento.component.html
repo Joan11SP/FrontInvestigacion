@@ -123,7 +123,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let seguir of Seguidos" (click)="datos_seguimiento(seguir)">
-                                <td></td>
+                                <td>{{seguir.name_projet}}</td>
                                 <td>{{seguir.qualification}}</td>
                                 <td><button class="btn btn-dark" id="delete" type="button" data-toggle="modal"
                                         data-target="#updateOrSave"><i class="fas fa-info"></i> Detalle</button>
