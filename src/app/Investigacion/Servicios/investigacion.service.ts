@@ -14,8 +14,8 @@ import { Capacitacion } from '../Models/capacitacion';
 })
 export class InvestigacionService {
 
-  Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
-  //Url = 'http://localhost:3000/SistemaInvestigacion/'
+  //Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
+  Url = 'http://localhost:3000/SistemaInvestigacion/'
   //UrlCountry='http://country.io/names.json'
   constructor(private http:HttpClient) { }
   headers=new HttpHeaders()
@@ -120,5 +120,20 @@ export class InvestigacionService {
   }
   allCapacitacion(){
     return this.http.get(`${this.Url}allCapacitacion`);
+  }
+  countProjecInvestigaction(){
+    return this.http.get(`${this.Url}countProjectInvestigation`);
+  }
+  countGroupInvestigaction(){
+    return this.http.get(`${this.Url}countGroupInvestigation`);
+  }
+  countBook(){
+    return this.http.get(`${this.Url}countBook`);
+  }
+  countArticle(){
+    return this.http.get(`${this.Url}countArticle`);
+  }
+  countConvenio(){
+    return this.http.get(`${this.Url}countConvenio`);
   }
 }

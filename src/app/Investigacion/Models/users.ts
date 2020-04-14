@@ -12,4 +12,5 @@ export interface User{
     id_carrer:number, 
     linea_investigacion:string,
     orcid:string
+    student_teacher:string
 }

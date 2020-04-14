@@ -17,7 +17,8 @@
                         <tr>
                             <th scope="col">Identificación</th>
                             <th scope="col">Nombres</th>
-                            <th scope="col">Nivel de Educación</th>
+                            <th scope="col">Linea de Investigación</th>
+                            <th scope="col">Carrera</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
@@ -26,7 +27,8 @@
                         <tr *ngFor="let user of allUsers" (click)="datos_usuario(user)">
                             <td>{{user.dni}}</td>
                             <td>{{user.names}}</td>
-                            <td>{{user.nivel_educacion}}</td>
+                            <td>{{user.linea_investigacion}}</td>
+                            <td>{{user.name_carrer}}</td>
                             <td><button class="btn btn-dark" id="delete" type="button" data-toggle="modal" data-target="#updateOrSave"><i class="fas fa-user-edit"></i> Editar</button></td>
                             <td><button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-dark" id="delete"><i class="fas fa-trash"></i> Eliminar</button></td>
                         </tr>
@@ -114,7 +116,7 @@
                                         <div class="col-md-4">
                                             <label>Carrera:</label>
                                             <select class="form-control" [(ngModel)]="User.id_carrer" formControlName="id_carrer">
-                                                <option *ngFor="let carrer of carreras" [value]="carrer.id">
+                                                <option *ngFor="let carrer of carreras" [value]="carrer._id">
                                                     {{carrer.nameCarrer}}</option>
                                             </select>
                                         </div>
@@ -162,6 +164,17 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row mx-auto">
+                                        <div class="col">
+                                            <label>Tipo de usuario:</label>
+                                            <select name="mitipo" class="form-control" [(ngModel)]="User.student_teacher" formControlName="student_teacher">
+                                                <option value="E">Estudiate</option>
+                                                <option value="D">Docente</option>
+                                            </select>
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col"></div>
+                                    </div><br>
                                     <div class="modal-footer">
                                         <button type="submit" [disabled]="!form_user.valid" class="btn btn-dark"><i
                                                 class="fas fa-save"></i> Guardar</button>

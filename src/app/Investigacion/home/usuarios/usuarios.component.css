@@ -5,3 +5,8 @@
     min-width: 100%;
     padding-left: 30%;
 }
+.tabla.tabla-hover {
+    max-height: 600px;
+    position: relative;
+    overflow: auto;
+}

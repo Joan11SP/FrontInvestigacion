@@ -23,7 +23,8 @@ export class UsuariosComponent implements OnInit {
     nivel_educacion: "",
     id_carrer: null,
     linea_investigacion: "",
-    orcid: ""
+    orcid: "",
+    student_teacher:""
   }
   carreras:any=[]
   user:any=[]
@@ -44,7 +45,8 @@ export class UsuariosComponent implements OnInit {
       nivel_educacion: ["",Validators.required],
       id_carrer:[ null,Validators.required],
       linea_investigacion: ["",Validators.required],
-      orcid: ["",Validators.required]
+      orcid: ["",Validators.required],
+      student_teacher: ["",Validators.required]
     })
   }
 
