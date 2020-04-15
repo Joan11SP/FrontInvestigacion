@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
   import { from } from 'rxjs';
-import { Login } from '../Models/Login';
-import { InvestigacionService } from '../Servicios/investigacion.service';
+import { Login } from '../../Models/Login';
+import { InvestigacionService } from '../../Servicios/investigacion.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder } from '@angular/forms';

@@ -1,4 +1,15 @@
 
+#nav-link{
+    color: #003764;
+    
+}
 
-
-
+.barra{
+    background-color:  #003764;
+    position: fixed;
+    z-index:999;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 50px;
+}

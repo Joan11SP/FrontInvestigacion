@@ -1,0 +1,42 @@
+body{
+    background: url(../../../../assets/fondo.jpeg);
+    background-size: cover;
+    min-height: 85vh;
+}
+.login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 400px;
+    width: 350px;
+    padding: 20px 20px;
+    transform: translate(-50%,-50%);
+    background: rgba(0, 0, 0, .15);
+    box-sizing: border-box;
+}
+.login input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.login input[type="text"],
+.login input[type="password"]
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+}
+.barra{
+    background-color:  #003764;
+    position: fixed;
+    z-index:999;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 50px;
+}
+.text-center{
+    margin: 0;
+    padding: 0 0 20px;
+}

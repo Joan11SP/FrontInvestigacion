@@ -222,10 +222,11 @@ export class ArticuloComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.Years.splice(0,1)
+    this.allArticles();
     this.noShow();
     this.allProjects();
     this.allUsers();
-    this.allArticles();
     this.anio();
   }
   allProjects(){
@@ -298,10 +299,12 @@ export class ArticuloComponent implements OnInit {
     }
   }
   noShow(){
-    this.Years.splice(0,1)
+    
     this.Articulo.personas.splice(0,1);
     this.form_articulo.reset();
     this.Articulo.anio=null
+    this.Articulo.pais=null
+    this.Articulo.idioma=null
   }
   openSnackBar(message) {
     this.snackBar.open(message, '', {

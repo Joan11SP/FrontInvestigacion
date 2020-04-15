@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { LoginComponent } from 'src/app/Investigacion/login/login.component';
+import { LoginComponent } from 'src/app/Investigacion/home/login/login.component';
 
 
 @Injectable({

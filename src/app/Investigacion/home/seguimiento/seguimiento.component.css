@@ -9,3 +9,7 @@
     position: relative;
     overflow: auto;
 }
+
+button{
+    background-color: #00bbb4;
+}
