@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.service.countProjecInvestigaction().subscribe(data => {
       this.allProject = data
-      console.log(data)
       let eje = this.allProject.ejecutandose
       let final = this.allProject.finalizado
       let porA = this.allProject.porAprobar
