@@ -1,11 +1,96 @@
-
-  <div class="container">
-    <div class="row mx-auto">
-      <div class="col md-6" >
-        <div>
-          <canvas id="canvas">{{Project}}</canvas>
+<div class="container">
+  <div class="row mx-auto">
+    <div class="col md-6">
+      <div class="card border-secondary mb-3">
+        <h3 class="text-center p-2">Proyectos de Investigación</h3>
+        <div class="card-body">
+          <div>
+            <canvas id="canvas">{{Project}}</canvas>
+          </div>
         </div>
       </div>
-      <div class="col-md-6"></div>
     </div>
-  </div>
+    <div class="col-md-6">
+      <div class="card border-secondary mb-3">
+        <h3 class="text-center p-2">Presupuestos de Proyectos</h3>
+        <div class="card-body">
+          <table class="table table-hover">
+            <thead>
+              <tr *ngFor="let ejec of allProject.preEjec">
+                <th scope="row">Ejecutandose</th>
+                <td>$ {{ejec.sum}}</td>
+              </tr>
+
+              <tr *ngFor="let ejec of allProject.preFinal">
+                <th scope="row">Finalizado</th>
+                <td>$ {{ejec.sum}}</td>
+              </tr>
+              <tr *ngFor="let ejec of allProject.prePor">
+                <th scope="row">Por Aprobar</th>
+                <td>$ {{ejec.sum}}</td>
+              </tr>
+              <tr *ngFor="let ejec of allProject.preApro">
+                <th scope="row">Aprobado</th>
+                <td>$ {{ejec.sum}}</td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div><br>
+  <div class="row mx-auto">
+    <div class="col md-6">
+      <div class="card border-secondary mb-3">
+        <div class="card-body">
+          <span style="font-size: 2em; color: Tomato;">
+            <i class="fas fa-book"></i>
+            <span class="text-center">    {{allBook}}</span>
+          </span>
+          <div style="float: inline-end">
+            <label>Libros - Guias</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col md-6">
+      <div class="card border-secondary mb-3">
+        <div class="card-body">
+          <span style="font-size: 2em; color: #305682;">
+            <i class="fas fa-file-signature"></i>
+            <span class="text-center">    {{allConvenios}}</span>
+          </span>
+          <div style="float: inline-end">
+            <label>Convenios de Investigación</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col md-6">
+      <div class="card border-secondary mb-3">
+        <div class="card-body">
+          <span style="font-size: 2em; color: #4360C0;">
+            <i class="fas fa-newspaper"></i>
+            <span class="text-center">    {{allArticle}}</span>
+          </span>
+          <div style="float: inline-end">
+            <label>Artículos creados</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col md-6">
+      <div class="card border-secondary mb-3">
+        <div class="card-body">
+          <span style="font-size: 2em; color: #9EEAB2;">
+            <i class="fas fa-users"></i>
+            <span class="text-center">    {{allGroup}}</span>
+          </span>
+          <div style="float: inline-end;">
+            <label>Grupos de Investigación</label>             
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>

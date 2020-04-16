@@ -7,15 +7,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./navegacion.component.css']
 })
 export class NavegacionComponent implements OnInit {
-
+  validar=[]
   constructor(private router:Router) { }
 
   ngOnInit() {
     var token = JSON.parse(localStorage.getItem("sesion"));
-    console.log(token)
+    if(token.length == 1){
+      this.validar = token  
+      
+    this.router.navigate(['home']);    
+      return true;
+    }
   }
-  users(){
-    this.router.navigate(['users'])
+  salir(){    
+    window.location.reload()
+    localStorage.removeItem('sesion')
+    
   }
-
 }

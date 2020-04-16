@@ -23,35 +23,38 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.service.countProjecInvestigaction().subscribe(data => {
       this.allProject = data
+      console.log(data)
       let eje = this.allProject.ejecutandose
       let final = this.allProject.finalizado
       let porA = this.allProject.porAprobar
       let apro = this.allProject.aprobado
 
-
+      //pastel de proyectos de investigacion
       this.Project = new Chart('canvas', {
-        type: 'pie',
+        type: 'doughnut',
         data: {
           datasets: [
             {
-              data: [eje,final,porA,apro],
-              backgroundColor: ['rgba(255,0,0,0.3)','#C7F3D5','#8C9EEC','#A4CA77'],
+              data: [eje, final, porA, apro],
+              backgroundColor: ['rgba(255,0,0,0.3)', '#C7F3D5', '#8C9EEC', '#A4CA77'],
               fill: false
             }
           ],
-          labels: ['En ejecución',
-            'Finalizado',
-            'Por Aprobar',
-            'Aprobado']
+                    
+          labels: [
+            [eje + ' En ejecución'],
+            [final + ' Finalizado'],
+            [porA + ' Por Aprobar'],
+            [apro + ' Aprobado']
+          ]          
         },
         options: {
           legend: {
+            
             display: true
           }
         }
       })
-
-      console.log(this.allProject.ejecutandose)
     })
     this.countGroup();
     this.countArticle();

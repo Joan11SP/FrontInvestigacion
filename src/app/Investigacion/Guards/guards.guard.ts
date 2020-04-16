@@ -14,7 +14,7 @@ export class GuardsGuard implements CanActivate {
     if(this.log.getData()){    
       return true;
     }else{      
-      this.router.navigate(['login'])
+      
       return false;
     }
   }  

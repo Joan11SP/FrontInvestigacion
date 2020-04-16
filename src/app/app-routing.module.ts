@@ -15,7 +15,7 @@ import { CapacitacionComponent } from './Investigacion/home/capacitacion/capacit
 
 
 const routes: Routes = [
-  { path: '', redirectTo: "login", pathMatch: "full" },
+  { path: '', redirectTo: "home", pathMatch: "full" },
   { path: "login", component: LoginComponent },
 
   {

@@ -6,5 +6,7 @@ export class Seguimiento{
     novedades:[];
     month:string;
     qualification:number;
-    percentage:number;
+    percentage:[
+        {}
+    ];
 }

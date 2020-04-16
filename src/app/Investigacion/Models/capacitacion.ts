@@ -6,4 +6,6 @@ export class Capacitacion{
     fecha_inicio:string;
     fecha_fin:string;
     name:string;
+    nhoras:number;
+    institucion_organiza:string
 }

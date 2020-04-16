@@ -1,24 +1,35 @@
-<nav class="navbar navbar-expand-lg ">
-    <img src="../../../assets/sgi.jpeg"  style="width: 250px;height: 50px;">
+<nav class="navbar navbar-expand-lg" id="fixed">
+    <img src="../../../assets/sgi.jpeg" style="width: 250px;height: 50px;">
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav"  style="margin-left: 130px;">
-            <li class="nav-item" >
-                <a class="nav-link" style="color: #003764;" routerLink="home"><i class="fas fa-house-user" aria-flowto="25"></i> Inicio</a>          
+        <ul class="navbar-nav" style="margin-left: 130px;">
+            <li class="nav-item">
+                <a class="nav-link" style="color: #003764;" routerLink="home"><i class="fas fa-house-user"
+                        aria-flowto="25"></i> Inicio</a>
 
             </li>
-            <li class="nav-item">
-                <a class="nav-link"  style="color: #003764;" routerLink="users"><i class="fas fa-user"></i> Investigadores</a>
+            <li class="nav-item" *ngIf="validar && validar.length>0">
+                <a class="nav-link" style="color: #003764;" routerLink="users"><i class="fas fa-user"></i>
+                    Investigadores</a>
+            </li>
+            <li class="nav-item" *ngIf="validar && validar.length==0">
+                <a class="nav-link" style="color: #003764;" href="http://investigacion.tecnologicoloja.edu.ec/"
+                    target="blank"><i class="fas fa-chalkboard-teacher"></i> Investigación</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link"  style="color: #003764;" routerLink="groupInvestigation"><i class="fas fa-users"></i> Grupos de
+                <a class="nav-link" style="color: #003764;" routerLink="groupInvestigation"><i class="fas fa-users"></i>
+                    Grupos de
                     Investigación</a>
             </li>
+            <li class="nav-item" *ngIf="validar && validar.length==0">
+                <a class="nav-link" style="color: #003764;" routerLink="login"><i class="fas fa-sign-in-alt"></i>
+                    Ingresar</a>
+            </li>
 
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown active" *ngIf="validar && validar.length>0">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                    data-toggle="dropdown" style="color: #003764;"  aria-haspopup="true" aria-expanded="false">
+                    data-toggle="dropdown" style="color: #003764;" aria-haspopup="true" aria-expanded="false">
                     Opciones
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -34,6 +45,8 @@
                         Convenios</a>
                     <a class="dropdown-item" routerLink="capacitacion"><i class="fas fa-chalkboard-teacher"></i>
                         Capacitaciones</a>
+                    <a class="dropdown-item" (click)="salir()"><i class="fas fa-sign-out-alt"></i>
+                        Salir</a>
                 </div>
             </li>
         </ul>
@@ -41,6 +54,6 @@
     <img src="../../../assets/istl.jpeg" style="width: 250px;height: 50px;">
 </nav>
 <div class="barra">
-    <nav class="navbar ">    
+    <nav class="navbar ">
     </nav>
 </div>

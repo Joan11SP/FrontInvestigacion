@@ -19,7 +19,7 @@ export class SeguimientoComponent implements OnInit {
     novedades: [],
     month: "",
     qualification: null,
-    percentage: null
+    percentage: [{}]
   }
   form_seguimiento: FormGroup
   Project: any = []
@@ -27,6 +27,7 @@ export class SeguimientoComponent implements OnInit {
   Seguidos: any = []
   bandera: boolean
   Create
+  seguimiento=[]
   constructor(private service: InvestigacionService, private snackBar: MatSnackBar, private form: FormBuilder) {
     this.form_seguimiento = this.form.group({
       _id: null,
@@ -38,10 +39,23 @@ export class SeguimientoComponent implements OnInit {
       qualification: null,
       percentage: null
     });
+    this.seguimiento=[
+      { porcentaje: 10 },
+      { porcentaje: 20 },
+      { porcentaje: 30 },
+      { porcentaje: 40 },
+      { porcentaje: 50 },
+      { porcentaje: 60 },
+      { porcentaje: 70 },
+      { porcentaje: 80 },
+      { porcentaje: 90 },
+      { porcentaje: 100 },
+    ]
   }
 
   ngOnInit() {
     this.Seguimiento.result_reach.splice(0, 50);
+    this.Seguimiento.percentage.splice(0,1);
     this.getProjects()
     this.allSeguimientos();
   }
@@ -51,20 +65,26 @@ export class SeguimientoComponent implements OnInit {
       this.Project = data
     })
   }
-  changeProject(event) {
+  async changeProject(event) {
     this.Seguimiento.result_reach.splice(0, 50);
     this.bandera = true
     var id = {
       _id: event.target.value
     }
-    this.service.OneProjectInvestigation(id).subscribe(data => {
+    await this.service.OneProjectInvestigation(id).subscribe(data => {
       this.resultados = data
       for (let a of this.resultados) {
         for (const a2 of a.resultados_esperados) {
-          this.Seguimiento.result_reach.push(a2)
+           this.Seguimiento.result_reach.push(a2)
         }
       }
     })
+  }
+  obtenerPorcentaje(i,posicion){    
+    const porc = i.target.value   
+      if(this.Seguimiento.percentage[posicion]!=porc){    
+        this.Seguimiento.percentage[posicion]=porc;
+      }  
   }
   createSeguimiento() {
     this.service.newSeguimiento(this.Seguimiento).subscribe(data => {
@@ -77,7 +97,7 @@ export class SeguimientoComponent implements OnInit {
   }
   allSeguimientos() {
     this.service.allSeguimiento().subscribe(data => {
-      this.Seguidos = data        
+      this.Seguidos = data         
     })
   }  
   deleteSeguimientos(){
@@ -95,6 +115,7 @@ export class SeguimientoComponent implements OnInit {
     this.bandera = false
     this.Seguimiento = Object.assign({}, seguir)
     this.Seguimiento.month = moment(seguir.month).format('YYYY-MM');
+    console.log(this.Seguimiento.percentage)
   }
   limpiar() {
     this.Seguimiento.result_reach.splice(0, 50);
@@ -108,4 +129,5 @@ export class SeguimientoComponent implements OnInit {
       duration:2000
     });
   }
+  
 }
