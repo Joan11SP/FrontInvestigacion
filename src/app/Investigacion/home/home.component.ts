@@ -81,6 +81,7 @@ export class HomeComponent implements OnInit {
   countConvenio() {
     this.service.countConvenio().subscribe(data => {
       this.allConvenio = data
+      console.log(data)
     })
   }
 
