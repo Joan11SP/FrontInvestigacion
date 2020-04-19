@@ -17,7 +17,6 @@ import { VerificarAppComponent } from './verificar-app/verificar-app.component';
 const routes: Routes = [
   { path: '', redirectTo: "home", pathMatch: "full" },
   { path: "login", component: LoginComponent },
-
   {
     path: "home", component: HomeComponent
   },
@@ -29,9 +28,6 @@ const routes: Routes = [
   },
   {
     path: "proyectoInvestigacion", component: ProyectoInvestigacionComponent,canActivate:[GuardsGuard]
-  },
-  {
-    path: "proyectoInvestigacion/:id", component: ProyectoInvestigacionComponent,canActivate:[GuardsGuard]
   },
   {
     path:"seguimiento",component:SeguimientoComponent,canActivate:[GuardsGuard]
@@ -47,9 +43,6 @@ const routes: Routes = [
   },
   {
     path:"capacitacion",component:CapacitacionComponent,canActivate:[GuardsGuard]
-  },
-  {
-    path:"googlef65ad32d2914197d.html",component:VerificarAppComponent
   }
 
 ];
