@@ -22,6 +22,7 @@ import { CapacitacionComponent } from './Investigacion/home/capacitacion/capacit
 import { ChartsModule } from 'ng2-charts';
 import {MatInputModule} from '@angular/material/input';
 import { SeguimientoPersonaComponent } from './Investigacion/home/seguimiento-persona/seguimiento-persona.component';
+import { VerificarAppComponent } from './verificar-app/verificar-app.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { SeguimientoPersonaComponent } from './Investigacion/home/seguimiento-pe
     LibroComponent,
     ConvenioComponent,
     CapacitacionComponent,
-    SeguimientoPersonaComponent
+    SeguimientoPersonaComponent,
+    VerificarAppComponent
   ],
   imports: [
     BrowserModule,

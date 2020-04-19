@@ -15,13 +15,13 @@ export class NavegacionComponent implements OnInit {
     if(token.length == 1){
       this.validar = token  
       
-    this.router.navigate(['home']);    
+      this.router.navigate(['home']);    
       return true;
     }
   }
   salir(){    
     window.location.reload()
     localStorage.removeItem('sesion')
-    
+    this.router.navigate(['home'])
   }
 }

@@ -5,11 +5,22 @@
     overflow: auto;
 }
 .tablaa {
-    max-height: 600px;
+    max-height: 500px;
+    position: relative;
+    overflow: auto;
+}
+.card {
+    max-height: 500px;
     position: relative;
     overflow: auto;
 }
 
 button{
     background-color: #00bbb4;
+}
+.anadidos1 {
+    max-height: 100px;
+    position: relative;
+    max-width: 500px;
+    overflow: auto;
 }

@@ -24,6 +24,7 @@ export class GrupoInvestigacionComponent implements OnInit {
   form_groupIn: FormGroup;
   updateGroups: any = []
   projects_generados: any = []
+  public validar=[]
   constructor(private form: FormBuilder, private service: InvestigacionService, private snackBar: MatSnackBar) {
     this.form_groupIn = this.form.group({
       _id: null,
@@ -39,6 +40,11 @@ export class GrupoInvestigacionComponent implements OnInit {
     this.allUsers()
     this.allGroupInvestigation()
     this.Group.menbers.splice(0, 10)
+    var token = JSON.parse(localStorage.getItem('sesion'));
+    if(token.length == 1){
+      this.validar = token    
+      return true;
+    }
   }
   GroupInvestigation() {
     if (this.Group._id == null) {

@@ -6,12 +6,12 @@ import { UsuariosComponent } from './Investigacion/home/usuarios/usuarios.compon
 import { GrupoInvestigacionComponent } from './Investigacion/home/grupo-investigacion/grupo-investigacion.component';
 import { ProyectoInvestigacionComponent } from './Investigacion/home/proyecto-investigacion/proyecto-investigacion.component';
 import { GuardsGuard } from './Investigacion/Guards/guards.guard';
-import { NavegacionComponent } from './Investigacion/navegacion/navegacion.component';
 import { SeguimientoComponent } from './Investigacion/home/seguimiento/seguimiento.component';
 import { ArticuloComponent } from './Investigacion/home/articulo/articulo.component';
 import { LibroComponent } from './Investigacion/home/libro/libro.component';
 import { ConvenioComponent } from './Investigacion/home/convenio/convenio.component';
 import { CapacitacionComponent } from './Investigacion/home/capacitacion/capacitacion.component';
+import { VerificarAppComponent } from './verificar-app/verificar-app.component';
 
 
 const routes: Routes = [
@@ -47,6 +47,9 @@ const routes: Routes = [
   },
   {
     path:"capacitacion",component:CapacitacionComponent,canActivate:[GuardsGuard]
+  },
+  {
+    path:"google-site-verification: googlef65ad32d2914197d.html",component:VerificarAppComponent
   }
 
 ];
