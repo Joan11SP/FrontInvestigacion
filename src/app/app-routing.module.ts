@@ -15,7 +15,7 @@ import { VerificarAppComponent } from './verificar-app/verificar-app.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: "home", pathMatch: "full" },
+  { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "login", component: LoginComponent },
   {
     path: "home", component: HomeComponent

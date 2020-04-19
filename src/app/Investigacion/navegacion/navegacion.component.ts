@@ -14,8 +14,6 @@ export class NavegacionComponent implements OnInit {
     var token = JSON.parse(localStorage.getItem("sesion"));
     if(token.length == 1){
       this.validar = token  
-      
-      this.router.navigate(['home']);    
       return true;
     }
   }
