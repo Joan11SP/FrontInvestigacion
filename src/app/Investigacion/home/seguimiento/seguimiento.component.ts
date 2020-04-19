@@ -115,14 +115,16 @@ export class SeguimientoComponent implements OnInit {
     this.bandera = false
     this.Seguimiento = Object.assign({}, seguir)
     this.Seguimiento.month = moment(seguir.month).format('YYYY-MM');
-    console.log(this.Seguimiento.percentage)
+    for (const iterator of this.Seguimiento.percentage) {
+      console.log(iterator)
+    }
   }
   limpiar() {
     this.Seguimiento.result_reach.splice(0, 50);
     this.Seguimiento.id_project = null
     this.resultados = null
     this.form_seguimiento.reset();
-    this.Seguimiento.percentage = undefined
+    this.Seguimiento.percentage.splice(0,50)
   }
   openSnackBar(message){    
     this.snackBar.open(message,'',{

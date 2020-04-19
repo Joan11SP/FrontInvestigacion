@@ -1,5 +1,5 @@
 <br>
-<div class="card">
+<div class="card" *ngIf="validar && validar.length>0" >
     <div class="card-title">
         <h3 class="text-center">Grupos de Investigación</h3>
     </div>
@@ -140,5 +140,23 @@
             </div>
 
         </div>
+    </div>
+</div>
+<div class="container"  *ngIf="validar && validar.length==0">
+    <div class="row mx-auto">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre de los Grupo de Investigación</th>
+                    <th scope="col">Linea de Investigación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let group of groupInvestigation">
+                    <td>{{group.name}}</td>
+                    <td>{{group.linea_investigacion}}</td>                    
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

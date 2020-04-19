@@ -60,21 +60,20 @@
                                     <div *ngIf="bandera==false">
                                         <table class="table table-hover">
                                             <tbody>
-                                                    <tr *ngFor="let res of Seguimiento.result_reach">
-                                                        <td>{{res}}</td>
-                                                        <div>
-                                                            <select class="form-control">
-                                                                <option *ngFor="let seg1 of Seguimiento.percentage;let i=index"
-                                                                   [value]="seg1">{{seg1}}</option>
-                                                            </select>
-                                                        </div>
+                                                <th>
+                                                    <tr *ngFor="let res of Seguimiento.result_reach">{{res}}
                                                     </tr>
+                                                </th>
+                                                <th>
+                                                    <tr *ngFor="let res of Seguimiento.percentage" style="float:unset;">
+                                                        %{{res}}</tr>
+                                                </th>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                                 <div *ngIf="bandera==true">
-                                    <div class="anadidos" *ngFor="let res of resultados">
+                                    <div class="anadidos1" *ngFor="let res of resultados">
                                         <table class="table table-hover">
                                             <tbody>
                                                 <tr *ngFor="let res of res.resultados_esperados;let i =index">
@@ -82,6 +81,7 @@
                                                     <div>
                                                         <select class="form-control"
                                                             (change)="obtenerPorcentaje($event,i)">
+                                                            <option>Elegir</option>
                                                             <option *ngFor="let seg of seguimiento"
                                                                 [value]="seg.porcentaje">{{seg.porcentaje}}</option>
                                                         </select>
