@@ -23,6 +23,7 @@ import { ChartsModule } from 'ng2-charts';
 import {MatInputModule} from '@angular/material/input';
 import { SeguimientoPersonaComponent } from './Investigacion/home/seguimiento-persona/seguimiento-persona.component';
 import { VerificarAppComponent } from './verificar-app/verificar-app.component';
+
 @NgModule({
   declarations: [
     AppComponent,

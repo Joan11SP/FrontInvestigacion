@@ -43,7 +43,12 @@ const routes: Routes = [
   },
   {
     path:"capacitacion",component:CapacitacionComponent,canActivate:[GuardsGuard]
+  } 
+    ,
+  {
+    path:"googlef65ad32d2914197d.html",component:VerificarAppComponent
   }
+  
 
 ];
 
