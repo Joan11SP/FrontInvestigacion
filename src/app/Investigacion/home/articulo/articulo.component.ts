@@ -20,7 +20,7 @@ export class ArticuloComponent implements OnInit {
   public save_update:any=[]
   public Articulo:Articulo={
     _id:null,
-    name:"",
+    name:null,
     id_project:"",
     personas:[{}],
     fecha_aceptacion:"",
@@ -36,11 +36,14 @@ export class ArticuloComponent implements OnInit {
     isbn:"",
     link:"",
     revista:"",
-    quartile:"",     
+    quartile:"",  
+    archivo:null   
   }
   public form_articulo:FormGroup;
   idioma:any=[]
   pais:any=[]
+  file :File
+  photoSelected
   constructor(private service:InvestigacionService, private form:FormBuilder,private snackBar:MatSnackBar) { 
     this.Documento=[
       {id:"A",documento:"Artículo"},
@@ -69,7 +72,8 @@ export class ArticuloComponent implements OnInit {
       isbn:"",
       link:"",
       revista:"",
-      quartile:"",     
+      quartile:"",  
+      archivo:""   
     })
     this.idioma= [
       {
@@ -246,21 +250,12 @@ export class ArticuloComponent implements OnInit {
   }
   saveOrupdate(){
     if(this.Articulo._id==null){
-      this.createArticle();
+      this.saveArticleOarchivo()
     }else{
       this.updateArticle();
     }
   }
-  createArticle(){
-    this.service.createArticle(this.Articulo).subscribe(data=>{
-      this.save_update = data
-      if(this.save_update.mensaje == 1){
-        this.openSnackBar('Guardado correctamente');
-        this.allArticles();
-        this.noShow();
-      }
-    })
-  }
+  
   updateArticle(){
     this.service.updateArticles(this.Articulo).subscribe(data=>{
       this.save_update = data
@@ -310,5 +305,40 @@ export class ArticuloComponent implements OnInit {
     this.snackBar.open(message, '', {
       duration: 2000
     });
+  }
+  photoSelect(event){
+    const archivo = event.target.files
+    if(event.target.files && event.target.files[0]){
+      this.file = <File>archivo[0]
+      const reader = new FileReader();
+      reader.onload = e => this.photoSelected = reader.result
+      reader.readAsDataURL(this.file)
+      
+    }
+  }
+  createArticle(){
+    this.service.createArticle(this.Articulo).subscribe(data=>{
+      this.save_update = data
+      if(this.save_update.mensaje == 1){
+        this.openSnackBar('Guardado correctamente');
+        this.allArticles();
+        this.noShow();
+      }
+    })
+  }
+  newArchivo(){
+    this.service.newArchivo(this.file).subscribe(data=>{
+      console.log(data);
+      this.file = null
+    })
+  }
+  saveArticleOarchivo(){
+    if(this.Articulo.name != null && this.file != undefined){
+      this.newArchivo();
+      this.createArticle();
+    }
+    else if(this.Articulo.name != null && this.file == undefined){
+      this.createArticle();
+    }
   }
 }

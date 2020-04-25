@@ -52,14 +52,15 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                                <button type="submit" class="btn btn-dark" data-dismiss="modal"(click)="deleteArticle()">Si</button>
+                                <button type="submit" class="btn btn-dark" data-dismiss="modal"
+                                    (click)="deleteArticle()">Si</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div><br>
             <br>
-            <form [formGroup]="form_articulo" (ngSubmit)="saveOrupdate()">
+            <form [formGroup]="form_articulo" (ngSubmit)="saveOrupdate()" enctype="multipart/form-data">
                 <input type="text" class="form-control" style="display: none;" [(ngModel)]="Articulo._id"
                     formControlName="_id">
                 <div class="row mx-auto">
@@ -120,13 +121,15 @@
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Fecha de Aceptación</label>
-                            <input type="date" class="form-control" [(ngModel)]="Articulo.fecha_aceptacion" formControlName="fecha_aceptacion">
+                            <input type="date" class="form-control" [(ngModel)]="Articulo.fecha_aceptacion"
+                                formControlName="fecha_aceptacion">
                         </div>
                     </div>
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Fecha de Publicación</label>
-                            <input type="date" class="form-control" [(ngModel)]="Articulo.fecha_publicacion" formControlName="fecha_publicacion">
+                            <input type="date" class="form-control" [(ngModel)]="Articulo.fecha_publicacion"
+                                formControlName="fecha_publicacion">
                         </div>
                     </div>
                     <div class="col md-6">
@@ -172,13 +175,15 @@
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Revista - Congreso</label>
-                            <input type="text" class="form-control" [(ngModel)]="Articulo.revista" formControlName="revista">
+                            <input type="text" class="form-control" [(ngModel)]="Articulo.revista"
+                                formControlName="revista">
                         </div>
                     </div>
                     <div class="col md-6">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Quartile</label>
-                            <input type="text" class="form-control" [(ngModel)]="Articulo.quartile" formControlName="quartile">
+                            <input type="text" class="form-control" [(ngModel)]="Articulo.quartile"
+                                formControlName="quartile">
                         </div>
                     </div>
                 </div>
@@ -208,11 +213,14 @@
                     </div>
                     <div class="col md-6">
                         <label>Tipo de Documento</label>
-                        <select class="form-control" [(ngModel)]="Articulo.tipo_document" formControlName="tipo_document">
+                        <select class="form-control" [(ngModel)]="Articulo.tipo_document"
+                            formControlName="tipo_document">
                             <option *ngFor="let doc of Documento" [value]="doc.id">{{doc.documento}}</option>
                         </select>
                     </div>
                     <div class="col md-6">
+                        <label>Elija un archivo</label>
+                        <input type="file" class="form-group"  formControlName="archivo"(change)="photoSelect($event)"accept=".pdf,.doc,.docx">
                     </div>
                 </div>
                 <br>

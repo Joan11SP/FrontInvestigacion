@@ -12,6 +12,7 @@ import { LibroComponent } from './Investigacion/home/libro/libro.component';
 import { ConvenioComponent } from './Investigacion/home/convenio/convenio.component';
 import { CapacitacionComponent } from './Investigacion/home/capacitacion/capacitacion.component';
 import { VerificarAppComponent } from './verificar-app/verificar-app.component';
+import { TerminosComponent } from './terminos/terminos.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,9 @@ const routes: Routes = [
     ,
   {
     path:"googlef65ad32d2914197d.html",component:VerificarAppComponent
+  },
+  {
+    path:"terminos",component:TerminosComponent
   }
   
 

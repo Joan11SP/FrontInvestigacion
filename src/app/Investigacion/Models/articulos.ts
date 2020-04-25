@@ -16,5 +16,6 @@ export class Articulo{
     isbn:string;
     link:string;
     revista:string;
-    quartile:string;     
+    quartile:string;
+    archivo:FormData
 }

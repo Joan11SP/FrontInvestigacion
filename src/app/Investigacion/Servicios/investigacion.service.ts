@@ -14,8 +14,8 @@ import { Capacitacion } from '../Models/capacitacion';
 })
 export class InvestigacionService {
 
-  Url = 'http://localhost:3000/SistemaInvestigacion/'
-  //Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
+  //Url = 'http://localhost:3000/SistemaInvestigacion/'
+  Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
   constructor(private http:HttpClient) { }
   headers=new HttpHeaders()
   getCarrers(){
@@ -49,6 +49,7 @@ export class InvestigacionService {
     return this.http.post(`${this.Url}deleteGroupInvestigation`,group);
   }
   createProjectInvestigation(project:ProjectInvestigation){
+    
     return this.http.post(`${this.Url}saveProjectInvestigation`,project);
   }
   allProjectInvestigation(){
@@ -75,7 +76,7 @@ export class InvestigacionService {
   deleteSeguimiento(id){
     return this.http.post(`${this.Url}deleteSeguimientos`,id);
   }
-  createArticle(article:Articulo){
+  createArticle(article:Articulo){   
     return this.http.post(`${this.Url}newArticle`,article);
   }
   allArticles(){
@@ -134,5 +135,10 @@ export class InvestigacionService {
   }
   countConvenio(){
     return this.http.get(`${this.Url}countConvenio`);
+  }
+  newArchivo(archivo:File){
+    const fileArchivo = new FormData();
+    fileArchivo.append('archivo',archivo)
+    return this.http.post(`${this.Url}newArticle`,fileArchivo);
   }
 }

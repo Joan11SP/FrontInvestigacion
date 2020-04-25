@@ -23,6 +23,7 @@ import { ChartsModule } from 'ng2-charts';
 import {MatInputModule} from '@angular/material/input';
 import { SeguimientoPersonaComponent } from './Investigacion/home/seguimiento-persona/seguimiento-persona.component';
 import { VerificarAppComponent } from './verificar-app/verificar-app.component';
+import { TerminosComponent } from './terminos/terminos.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { VerificarAppComponent } from './verificar-app/verificar-app.component';
     ConvenioComponent,
     CapacitacionComponent,
     SeguimientoPersonaComponent,
-    VerificarAppComponent
+    VerificarAppComponent,
+    TerminosComponent
   ],
   imports: [
     BrowserModule,
