@@ -107,6 +107,7 @@ export class SeguimientoComponent implements OnInit {
       if(this.Create.mensaje=="eliminado"){
        this.limpiar();
       this.allSeguimientos();
+      this.getProjects()
       this.openSnackBar('Eliminado')
       }
       
