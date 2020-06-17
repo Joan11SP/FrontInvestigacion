@@ -90,7 +90,7 @@ export class SeguimientoComponent implements OnInit {
     this.service.newSeguimiento(this.Seguimiento).subscribe(data => {
       this.Create = data
         this.openSnackBar('Se guardo Correctamente')
-         this.allSeguimientos()
+        this.allSeguimientos()
         this.getProjects()
         this.limpiar()
       
