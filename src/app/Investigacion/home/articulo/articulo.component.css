@@ -18,3 +18,8 @@ button{
     position: relative;
     overflow: auto;
 }
+#archivo {
+    height: 150px;
+    position: relative;
+    overflow: auto;
+}

@@ -246,6 +246,7 @@ export class ArticuloComponent implements OnInit {
   allArticles(){
     this.service.allArticles().subscribe(data=>{
       this.Articulos = data
+      console.log(data)
     })
   }
   saveOrupdate(){
