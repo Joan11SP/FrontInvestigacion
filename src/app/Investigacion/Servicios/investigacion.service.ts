@@ -14,8 +14,8 @@ import { Capacitacion } from '../Models/capacitacion';
 })
 export class InvestigacionService {
 
-  Url = 'http://localhost:3000/SistemaInvestigacion/'
-  //Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
+  //Url = 'http://localhost:3000/SistemaInvestigacion/'
+  Url = 'https://proyecto-investigacionitsl.herokuapp.com/SistemaInvestigacion/';
   constructor(private http:HttpClient) { }
   headers=new HttpHeaders()
   getCarrers(){
