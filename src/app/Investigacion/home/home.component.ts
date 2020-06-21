@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   allArticle: any = []
   allConvenio: any = []
 
+  
 
   constructor(private service: InvestigacionService, private route: Router) {
 

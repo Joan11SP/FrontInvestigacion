@@ -3,6 +3,10 @@ import { User } from '../../Models/users';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { InvestigacionService } from '../../Servicios/investigacion.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Usuario } from '../../Exports/exportPerson';
+import { ExportUsersService } from '../../Servicios/export-users.service';
+import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-usuarios',
@@ -26,12 +30,18 @@ export class UsuariosComponent implements OnInit {
     orcid: "",
     student_teacher:""
   }
+  
   carreras:any=[]
   user:any=[]
   allUsers:any=[]
+  exporUser:any=[]
   form_user: FormGroup
+  fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+    fileExtension = '.xlsx';
+  
   private mail: any = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  constructor(private form: FormBuilder, private service:InvestigacionService,private snackBar:MatSnackBar) {
+  
+  constructor(private form: FormBuilder, private service:InvestigacionService,private snackBar:MatSnackBar,private usuario:ExportUsersService) {
     this.form_user = this.form.group({
       _id:null,
       dni:[ "",Validators.required],
@@ -52,12 +62,19 @@ export class UsuariosComponent implements OnInit {
 
   ngOnInit(): void { 
     this.getCarrers() 
-    this.allUser() 
+    this.allUser()
+    this.getExport(); 
   }
   //obtiene los roles de los usuarios
   getCarrers() {
     this.service.getCarrers().subscribe(data => {
       this.carreras
+       = data
+    })
+  }
+  getExport(){
+    this.service.exportarPersonas().subscribe(data => {
+      this.exporUser
        = data
     })
   }
@@ -115,14 +132,19 @@ export class UsuariosComponent implements OnInit {
       this.allUsers=data
       if (this.allUsers.deletedCount == 1) {
         this.openSnackBar('Se ha eliminado Correctamente')
-        this.allUser();
+        
       } 
+      this.allUser();
     })
   }
   openSnackBar(message){    
     this.snackBar.open(message,'',{
       duration:2000
     });
+  }
+  export(){
+    console.log('print');
+    this.usuario.exportExcel(this.exporUser,'');
   }
   //metodos para el form y validar si un campo esta vacio.
   get email() { return this.form_user.get('email') }

@@ -141,4 +141,7 @@ export class InvestigacionService {
     fileArchivo.append('archivo',archivo)
     return this.http.post(`${this.Url}newArticle`,fileArchivo);
   }
+  exportarPersonas(){
+    return this.http.get(`${this.Url}exportToExcel`);
+  }
 }

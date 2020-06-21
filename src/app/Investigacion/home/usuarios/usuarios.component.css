@@ -16,6 +16,5 @@ button{
 }
 .tabla {
     max-height: 500px;
-    position: relative;
     overflow: auto;
 }

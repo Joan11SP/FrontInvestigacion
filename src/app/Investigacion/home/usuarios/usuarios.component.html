@@ -1,19 +1,20 @@
 <br>
 
-<body>
-    <div class="container  table-wrapper-scroll-y my-custom-scrollbar">
+  
 
         <!--Nuevo Registro-->
         <div class="row mx-auto" style="margin-block-end: auto;">
             <div class="col-md-8">
                 <button mat-button class="btn btn-dark" type="button" data-toggle="modal" data-target="#updateOrSave" (click)="openModal()"><i class="fas fa-user-plus"></i> Nuevo
                    Investigador</button>
+                   <button  style="margin-left: 15px;" type="submit" class="btn btn-dark" (click)="export()"> <i class="fas fa-file-excel"></i> Exportar</button>
+       
             </div>
         </div><br>
-        <div class="row mx-auto">
-            <div class="tabla">
-                <div class="col-lg-8 col-lg-offset">
-                    <table class="table table-hover">
+        <div class="col mx-auto" style="text-align:center;">
+            <div class="tabla" >
+                <div>
+                    <table class="table table-hover"  style="margin: 0 auto;">
                         <thead>
                             <tr>
                                 <th scope="col">Identificación</th>
@@ -58,8 +59,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div><br>
     <!-- Modal con Registros -->
     <div class="modal fade" id="updateOrSave" tabindex="-1" role="document" data-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="true" draggable="true">
         <div class="modal-dialog modal-lg">
@@ -191,4 +191,4 @@
             </div>
         </div>
     </div>
-</body>
+    
