@@ -80,7 +80,7 @@ export class UsuariosComponent implements OnInit {
   }
   //verifica cuando se debe actualizar o agregar usuarios
   newUser() {
-    if (this.User._id === null) {
+    if (this.User._id == null) {
       this.saveUser();    
     } else {
      this.updateUser();      
@@ -116,7 +116,8 @@ export class UsuariosComponent implements OnInit {
       this.user = data
       if (this.user.mensaje == "cedula_incorrecta") {
         this.openSnackBar("La cédula ingresada es incorrecta")
-      } else if (this.user.mensaje == "modificado") {
+      } 
+      if (this.user.mensaje == "modificado") {
         this.openSnackBar('Se ha modificado Correctamente')
         this.allUser();
         this.form_user.reset()       
@@ -131,8 +132,7 @@ export class UsuariosComponent implements OnInit {
     this.service.deleteUser(this.User).subscribe(data=>{
       this.allUsers=data
       if (this.allUsers.deletedCount == 1) {
-        this.openSnackBar('Se ha eliminado Correctamente')
-        
+        this.openSnackBar('Se ha eliminado Correctamente')        
       } 
       this.allUser();
     })
