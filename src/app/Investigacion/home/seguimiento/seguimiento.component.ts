@@ -54,8 +54,8 @@ export class SeguimientoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.Seguimiento.result_reach.splice(0, 50);
-    this.Seguimiento.percentage.splice(0,1);
+    
+    this.limpiar();
     this.getProjects()
     this.allSeguimientos();
   }
@@ -66,11 +66,13 @@ export class SeguimientoComponent implements OnInit {
     })
   }
   async changeProject(event) {
-    this.Seguimiento.result_reach.splice(0, 50);
+    this.Seguimiento.result_reach.length=1;
     this.bandera = true
     var id = {
       _id: event.target.value
     }
+    console.log('resultado ' + this.Seguimiento.result_reach);
+    
     await this.service.OneProjectInvestigation(id).subscribe(data => {
       this.resultados = data
       for (let a of this.resultados) {
@@ -92,13 +94,14 @@ export class SeguimientoComponent implements OnInit {
         this.openSnackBar('Se guardo Correctamente')
         this.allSeguimientos()
         this.getProjects()
-        this.limpiar()
-      
+        this.limpiar()      
     })
   }
   allSeguimientos() {
     this.service.allSeguimiento().subscribe(data => {
-      this.Seguidos = data         
+      this.Seguidos = data   
+      console.log(this.Seguidos);
+            
     })
   }  
   deleteSeguimientos(){
@@ -121,12 +124,13 @@ export class SeguimientoComponent implements OnInit {
       console.log(iterator)
     }
   }
-  limpiar() {
-    this.Seguimiento.result_reach.splice(0, 50);
+  limpiar() {    
+    this.Seguimiento.result_reach.length=1;
     this.Seguimiento.id_project = null
     this.resultados = null
-    this.form_seguimiento.reset();
-    this.Seguimiento.percentage.splice(0,50)
+    this.form_seguimiento.reset();    
+    this.Seguimiento.percentage.length=1;
+    console.log('limpiado ' + this.Seguimiento);
   }
   openSnackBar(message){    
     this.snackBar.open(message,'',{
