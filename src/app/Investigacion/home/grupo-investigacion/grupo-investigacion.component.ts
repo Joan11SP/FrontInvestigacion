@@ -100,7 +100,6 @@ export class GrupoInvestigacionComponent implements OnInit {
     })
   }
   deleteGroup() {
-    console.log(this.Group)
     this.service.deleteGroupInvestigation(this.Group).subscribe(data => {
       this.form_groupIn.reset()
       this.Group.menbers.splice(0, 10)

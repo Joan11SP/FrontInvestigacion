@@ -129,7 +129,6 @@ export class ProyectoInvestigacionComponent implements OnInit {
   updateProject(){
     this.service.updateProjectInvestigation(this.Project).subscribe(data=>{
       this.saveProject = data
-      console.log(data)
       if(this.saveProject.nModified==1){
         this.openSnackBar("Modificado Correctamente");
         this.allProyect();

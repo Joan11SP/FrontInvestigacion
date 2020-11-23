@@ -71,7 +71,6 @@ export class SeguimientoComponent implements OnInit {
     var id = {
       _id: event.target.value
     }
-    console.log('resultado ' + this.Seguimiento.result_reach);
     
     await this.service.OneProjectInvestigation(id).subscribe(data => {
       this.resultados = data
@@ -100,7 +99,6 @@ export class SeguimientoComponent implements OnInit {
   allSeguimientos() {
     this.service.allSeguimiento().subscribe(data => {
       this.Seguidos = data   
-      console.log(this.Seguidos);
             
     })
   }  
@@ -120,9 +118,7 @@ export class SeguimientoComponent implements OnInit {
     this.bandera = false
     this.Seguimiento = Object.assign({}, seguir)
     this.Seguimiento.month = moment(seguir.month).format('YYYY-MM');
-    for (const iterator of this.Seguimiento.percentage) {
-      console.log(iterator)
-    }
+    
   }
   limpiar() {    
     this.Seguimiento.result_reach.length=1;
@@ -130,7 +126,7 @@ export class SeguimientoComponent implements OnInit {
     this.resultados = null
     this.form_seguimiento.reset();    
     this.Seguimiento.percentage.length=1;
-    console.log('limpiado ' + this.Seguimiento);
+    
   }
   openSnackBar(message){    
     this.snackBar.open(message,'',{

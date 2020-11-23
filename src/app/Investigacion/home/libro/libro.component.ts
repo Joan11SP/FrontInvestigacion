@@ -94,7 +94,6 @@ export class LibroComponent implements OnInit {
   allBooks(){
     this.servicio.allBooks().subscribe(data=>{
       this.allBook = data
-      console.log(data)
       for (const data of this.allBook) {
         data.fecha_publicacion = moment.utc(data.fecha_publicacion).format('LL')
       }

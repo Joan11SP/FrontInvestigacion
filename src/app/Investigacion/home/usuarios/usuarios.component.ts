@@ -98,7 +98,6 @@ export class UsuariosComponent implements OnInit {
   }
   saveUser() {
     this.service.createUsers(this.User).subscribe(data => {
-      console.log(data)
       this.user = data
       if (this.user.mensaje == "cedula_yaRegistrada") {
         this.openSnackBar("La identificación  xcccxya existe")
@@ -143,7 +142,6 @@ export class UsuariosComponent implements OnInit {
     });
   }
   export(){
-    console.log('print');
     this.usuario.exportExcel(this.exporUser,'');
   }
   //metodos para el form y validar si un campo esta vacio.
