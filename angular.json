@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "proyectoInvestigacion"
+  "defaultProject": "proyectoInvestigacion",
+  "cli": {
+    "analytics": "2ef22b89-732c-4cac-99b8-7cadad5a26d0"
+  }
 }

@@ -12,10 +12,7 @@ export class NavegacionComponent implements OnInit {
 
   ngOnInit() {
     var token = JSON.parse(localStorage.getItem("sesion"));
-    if(token.length == 1){
-      this.validar = token  
-      return true;
-    }
+    this.validar = token
   }
   salir(){    
     window.location.reload()

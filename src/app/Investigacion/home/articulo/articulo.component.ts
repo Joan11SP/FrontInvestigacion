@@ -18,6 +18,7 @@ export class ArticuloComponent implements OnInit {
   public Articulos:any=[]
   public Years=[{}];
   public save_update:any=[]
+  public validar=[]
   public Articulo:Articulo={
     _id:null,
     name:null,
@@ -226,8 +227,13 @@ export class ArticuloComponent implements OnInit {
   }
 
   ngOnInit() {
+    
     this.Years.splice(0,1)
     this.allArticles();
+    var token = JSON.parse(localStorage.getItem('sesion'));
+    this.validar = token; 
+    moment.locale('es')  
+    console.log(this.validar)
     this.noShow();
     this.allProjects();
     this.allUsers();
@@ -246,7 +252,9 @@ export class ArticuloComponent implements OnInit {
   allArticles(){
     this.service.allArticles().subscribe(data=>{
       this.Articulos = data
-      console.log(data)
+      for (const data of this.Articulos) {
+        data.fecha_publicacion = moment.utc(data.fecha_publicacion).format('LL')
+      }
     })
   }
   saveOrupdate(){

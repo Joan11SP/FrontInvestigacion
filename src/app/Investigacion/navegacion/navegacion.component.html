@@ -8,11 +8,11 @@
                         aria-flowto="25"></i> Inicio</a>
 
             </li>
-            <li class="nav-item" *ngIf="validar && validar.length>0">
+            <li class="nav-item" *ngIf="validar!=null">
                 <a class="nav-link" style="color: #003764;" routerLink="users"><i class="fas fa-user"></i>
                     Investigadores</a>
             </li>
-            <li class="nav-item" *ngIf="validar && validar.length==0">
+            <li class="nav-item" *ngIf="validar==null">
                 <a class="nav-link" style="color: #003764;" href="http://investigacion.tecnologicoloja.edu.ec/"
                     target="blank"><i class="fas fa-chalkboard-teacher"></i> Investigación</a>
             </li>
@@ -22,12 +22,21 @@
                     Grupos de
                     Investigación</a>
             </li>
-            <li class="nav-item" *ngIf="validar && validar.length==0">
-                <a class="nav-link" style="color: #003764;" routerLink="login"><i class="fas fa-sign-in-alt"></i>
-                    Ingresar</a>
+            <li class="nav-item dropdown active" *ngIf="validar==null">
+                
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" style="color: #003764;" aria-haspopup="true" aria-expanded="false">
+                Más
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" style="color: #003764;" routerLink="login"><i class="fas fa-sign-in-alt"></i>
+                        Ingresar</a>
+                    <a class="dropdown-item" routerLink="articulo"><i class="fas fa-newspaper"></i>
+                        Artículos</a>
+                </div>
             </li>
 
-            <li class="nav-item dropdown active" *ngIf="validar && validar.length>0">
+            <li class="nav-item dropdown active" *ngIf="validar!=null">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                     data-toggle="dropdown" style="color: #003764;" aria-haspopup="true" aria-expanded="false">
                     Opciones

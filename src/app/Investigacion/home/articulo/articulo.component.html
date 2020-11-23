@@ -1,5 +1,5 @@
 <br>
-<div class="container">
+<div class="container" *ngIf="validar != null">
     <div class="card">
         <div class="card-title">
             <h3 class="text-center p-2">Artículos</h3>
@@ -265,4 +265,61 @@
             </form><br>
         </div>
     </div>
+</div>
+<br>
+
+<div class="container nodata" *ngIf="validar == null">
+    <div class="card">
+        <div class="card-body">
+            <div *ngFor="let article of Articulos; let i = index">
+                <label>{{i+1}}. {{article.name}}</label>
+                <ul>
+                    <li>
+                        <div *ngIf="article.tipo_document == 'A'; else poster">
+                            <label class="info">Articulo</label>
+                        </div>
+                        <ng-template #poster>
+                            <label class="info">Poster</label>
+                        </ng-template>                        
+                    </li>
+                    <li>                             
+                        <a href="" target="_blank" *ngIf="article.link != '';else nolink" class="info">Link: {{article.link}}</a>                   
+                        <ng-template #nolink>
+                            <label class="info">Link: </label>
+                        </ng-template>
+                    </li>
+                    <li>
+                        <label *ngIf="article.anio != '';else noanio" class="info">Año: {{article.anio}}</label>
+                        <ng-template #noanio>
+                            <label class="info">Año: </label>
+                        </ng-template>
+                    </li>
+                    <li>
+                        <label *ngIf="article.indice == 'M'" class="info">Base de Datos: Memorias</label>
+                        <label *ngIf="article.indice == 'L'" class="info">Base de Datos: LatIndex</label>
+                        <label *ngIf="article.indice == 'S'" class="info">Base de Datos: Scopus</label>
+                    </li>
+                    <li>
+                        <label class="info">Fecha de Publicación: {{article.fecha_publicacion}}</label>
+                    </li>
+                    <li>
+                        <label>Autores</label>
+                        <ul>
+                            <li *ngFor='let persona of article.personas' class="names">
+                                <label class='info'>{{persona}}</label>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div *ngIf='Articulos.length == 0' class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+                <br>
+            </div>
+            
+        </div>
+    </div>
+
 </div>

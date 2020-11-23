@@ -41,10 +41,7 @@ export class GrupoInvestigacionComponent implements OnInit {
     this.allGroupInvestigation()
     this.Group.menbers.splice(0, 10)
     var token = JSON.parse(localStorage.getItem('sesion'));
-    if(token.length == 1){
-      this.validar = token    
-      return true;
-    }
+    this.validar = token  
   }
   GroupInvestigation() {
     if (this.Group._id == null) {
