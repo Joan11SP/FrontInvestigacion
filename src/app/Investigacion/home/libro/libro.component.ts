@@ -24,6 +24,7 @@ export class LibroComponent implements OnInit {
   }
   books:any=[]
   allBook:any=[]
+  public validar = []
   public form_libro:FormGroup
   constructor(private servicio:InvestigacionService,private snackBar:MatSnackBar,private form:FormBuilder) { 
     this.form_libro = this.form.group({
@@ -40,7 +41,10 @@ export class LibroComponent implements OnInit {
   }
 
   ngOnInit() {
+    var token = JSON.parse(localStorage.getItem('sesion'));
+    this.validar = token 
     this.allUser();
+    moment.locale('es')  
     this.noShow();
     this.allBooks();
   }
@@ -90,6 +94,10 @@ export class LibroComponent implements OnInit {
   allBooks(){
     this.servicio.allBooks().subscribe(data=>{
       this.allBook = data
+      console.log(data)
+      for (const data of this.allBook) {
+        data.fecha_publicacion = moment.utc(data.fecha_publicacion).format('LL')
+      }
     })
   }
   detail_book(book){

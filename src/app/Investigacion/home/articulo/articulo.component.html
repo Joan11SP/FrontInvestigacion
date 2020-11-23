@@ -283,24 +283,24 @@
                         </ng-template>                        
                     </li>
                     <li>                             
-                        <a href="" target="_blank" *ngIf="article.link != '';else nolink" class="info">Link: {{article.link}}</a>                   
+                        Link: <a href="" target="_blank" *ngIf="article.link != '';else nolink" class="info">{{article.link}}</a>                   
                         <ng-template #nolink>
-                            <label class="info">Link: </label>
+                            Link: <label class="info"></label>
                         </ng-template>
                     </li>
                     <li>
-                        <label *ngIf="article.anio != '';else noanio" class="info">Año: {{article.anio}}</label>
+                        Año: <label *ngIf="article.anio != '';else noanio" class="info">{{article.anio}}</label>
                         <ng-template #noanio>
-                            <label class="info">Año: </label>
+                            Año: <label class="info"></label>
                         </ng-template>
                     </li>
                     <li>
-                        <label *ngIf="article.indice == 'M'" class="info">Base de Datos: Memorias</label>
-                        <label *ngIf="article.indice == 'L'" class="info">Base de Datos: LatIndex</label>
-                        <label *ngIf="article.indice == 'S'" class="info">Base de Datos: Scopus</label>
+                        Base de Datos: <label *ngIf="article.indice == 'M'" class="info">Memorias</label>
+                        Base de Datos: <label *ngIf="article.indice == 'L'" class="info">LatIndex</label>
+                        Base de Datos: <label *ngIf="article.indice == 'S'" class="info">Scopus</label>
                     </li>
                     <li>
-                        <label class="info">Fecha de Publicación: {{article.fecha_publicacion}}</label>
+                        Fecha de Publicación: <label class="info">{{article.fecha_publicacion}}</label>
                     </li>
                     <li>
                         <label>Autores</label>

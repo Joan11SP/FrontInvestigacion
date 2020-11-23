@@ -7,3 +7,15 @@
 button{
     background-color: #00bbb4;
 }
+
+.info{
+    font-weight: normal;
+}
+
+.info{
+    text-transform: uppercase;
+}
+.nodata{
+    overflow: hidden;
+    height: 100%;
+}

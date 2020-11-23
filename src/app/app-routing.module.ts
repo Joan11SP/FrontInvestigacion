@@ -37,7 +37,7 @@ const routes: Routes = [
     path:"articulo",component:ArticuloComponent
   },
   {
-    path:"libros",component:LibroComponent,canActivate:[GuardsGuard]
+    path:"libros",component:LibroComponent
   },
   {
     path:"convenio",component:ConvenioComponent,canActivate:[GuardsGuard]

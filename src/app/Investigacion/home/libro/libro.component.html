@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="validar != null">
     <div class="row mx-auto">
         <div class="col lg-6">
             <div class="card">
@@ -7,12 +7,14 @@
                 </div>
                 <div class="card-body">
                     <form [formGroup]="form_libro" (ngSubmit)="saveOrupdate()">
-                        <input type="text" class="form-control" style="display: none;" [(ngModel)]="Libro._id" formControlName="_id">
+                        <input type="text" class="form-control" style="display: none;" [(ngModel)]="Libro._id"
+                            formControlName="_id">
                         <div class="row mx-auto">
                             <div class="col md-4">
                                 <div class="form-group">
                                     <label>Titulo</label>
-                                    <input type="text" class="form-control" [(ngModel)]="Libro.titulo" formControlName="titulo">
+                                    <input type="text" class="form-control" [(ngModel)]="Libro.titulo"
+                                        formControlName="titulo">
                                 </div>
                             </div>
                             <div class="col">
@@ -23,13 +25,15 @@
                             <div class="col md-4">
                                 <div class="form-group">
                                     <label>Fecha de Publicación</label>
-                                    <input type="date" class="form-control" [(ngModel)]="Libro.fecha_publicacion" formControlName="fecha_publicacion">
+                                    <input type="date" class="form-control" [(ngModel)]="Libro.fecha_publicacion"
+                                        formControlName="fecha_publicacion">
                                 </div>
                             </div>
                             <div class="col md-4">
                                 <div class="form-group">
                                     <label>Editorial</label>
-                                    <input type="text" class="form-control" [(ngModel)]="Libro.editorial" formControlName="editorial">
+                                    <input type="text" class="form-control" [(ngModel)]="Libro.editorial"
+                                        formControlName="editorial">
                                 </div>
                             </div>
                         </div>
@@ -37,13 +41,15 @@
                             <div class="col md-4">
                                 <div class="form-group">
                                     <label>Tipo de Libro</label>
-                                    <input type="text" class="form-control" [(ngModel)]="Libro.tipo_libro" formControlName="tipo_libro">
+                                    <input type="text" class="form-control" [(ngModel)]="Libro.tipo_libro"
+                                        formControlName="tipo_libro">
                                 </div>
                             </div>
                             <div class="col md-4">
                                 <div class="form-group">
                                     <label>Número de Paginas</label>
-                                    <input type="number" class="form-control" [(ngModel)]="Libro.numero_paginas" formControlName="numero_paginas">
+                                    <input type="number" class="form-control" [(ngModel)]="Libro.numero_paginas"
+                                        formControlName="numero_paginas">
                                 </div>
                             </div>
                         </div>
@@ -51,7 +57,8 @@
                             <div class="col md-4">
                                 <div class="form-group">
                                     <label>Área de la Publicación</label>
-                                    <input type="text" class="form-control" [(ngModel)]="Libro.area_publicacion" formControlName="area_publicacion">
+                                    <input type="text" class="form-control" [(ngModel)]="Libro.area_publicacion"
+                                        formControlName="area_publicacion">
                                 </div>
                             </div>
                             <div class="col md-4">
@@ -158,3 +165,39 @@
                 </div>
             </div>
         </div>
+
+    </div>
+</div>
+<div class="container nodata" *ngIf="validar == null">
+    <div class="card">
+        <div class="card-body">
+            <div *ngFor="let book of allBook; let i = index">
+                <label>{{i+1}}. {{book.titulo}}</label>
+                <ul>
+                    <li>
+                        Editorial: <label class="info">{{book.editorial}}</label>
+                    </li>
+                    <li>
+                        Fecha de Publicación: <label class="info">{{book.fecha_publicacion}}</label>
+                    </li>
+                    <li>
+                        <label>Autores</label>
+                        <ul>
+                            <li *ngFor='let persona of book.personas' class="names">
+                                <label class='info'>{{persona}}</label>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div *ngIf='allBook.length == 0' class="text-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+                <br>
+            </div>
+
+        </div>
+    </div>
+
+</div>
